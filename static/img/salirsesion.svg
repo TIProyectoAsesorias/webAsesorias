@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64.004" height="63.563" viewBox="0 0 64.004 63.563">
+  <defs>
+    <filter id="ic_power_settings_new_24px" x="0" y="0" width="64.004" height="63.563" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#ic_power_settings_new_24px)">
+    <path id="ic_power_settings_new_24px-2" data-name="ic_power_settings_new_24px" d="M28.558,3H23.446V28.313h5.112ZM40.9,8.493l-3.629,3.594a17.455,17.455,0,0,1,6.619,13.694,17.891,17.891,0,0,1-35.781,0,17.6,17.6,0,0,1,6.594-13.72L11.1,8.493A22.523,22.523,0,0,0,3,25.781a23,23,0,0,0,46,0A22.523,22.523,0,0,0,40.9,8.493Z" transform="translate(6 3)" fill="#ededed"/>
+  </g>
+</svg>

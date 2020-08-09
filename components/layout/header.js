@@ -1,36 +1,74 @@
-import React ,{useState}from "react";
+import React, { useState, useContext } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import Link from "next/link";
 import Navegacion from "./navegacion";
+import { FirebaseContext } from "../../firebase";
+const Tete = styled.header`
+  background-color: var(--verde);
+  padding: 0 0 0;
+  margin: 0 0 0;
+  h1 {
+    font-family: Roboto, sans-serif;
+  }
+`;
+const IMG = styled.img`
+  height: 52px;
+  margin-top: 15px;
+  margin-left: 28px;
+  margin-bottom: 2px;
+`;
+//mwh img src
+const Butoun = styled.button`
+  background: Transparent;
+  margin-top: 15;
+  margin-left: 10px;
+  border: transparent;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 const Header = () => {
-  const [user,setUser]=useState(true);
+  const { usuario, firebase } = useContext(FirebaseContext);
+console.log(usuario)
   return (
-    <header>
-      <div>
-        <div>
-          <Link href="/">
-            <h1>AS</h1>
-          </Link>
-          {user ? (
-            <>
-              <p>Hola amibo</p>
-              <Navegacion />
-             <button onClick={()=>setUser(false)}>cerrar sesion</button>
-            </>
-          ) : (
-            <>
+    <Tete>
+      <div
+        css={css`
+          display: flex;
+          flex-wrap: wrap;
+        `}
+      >
+        <IMG src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
+
+        {usuario ? (
+          <>
+            <p>Hola {usuario.displayName}</p> 
+            <Navegacion />{" "}
+            <Butoun onClick={() => firebase.logOut()}>
+              <img src="../static/img/salirsesion.svg" />
+            </Butoun>
+          </>
+        ) : (
+          <>
+            <div>
               <Link href="/">
-                <a>Login</a>
+                <h1></h1>
               </Link>
-              <Link href="/">
-                <a>Crear cuenta</a>
-              </Link>
-            </>
-          )}
-        </div>
+
+              <>
+                <Link href="/">
+                  <a>Login</a>
+                </Link>
+                <Link href="/crear-cuenta">
+                  <a>Crear cuenta</a>
+                </Link>
+              </>
+            </div>
+          </>
+        )}
       </div>
-    </header>
+    </Tete>
   );
 };
 
