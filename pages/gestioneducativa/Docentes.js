@@ -6,6 +6,7 @@ import {FirebaseContext} from "../../firebase";
 import React, { useState,useContext } from "react";
 import { css } from "@emotion/core";
  import validarMaestro from "../../validar/validarMaestro"; 
+ import Cartita from "../../components/ui/Cards"
 //import { Formulario, Campo, InputSub, Error } from "../components/ui/Forms";
  const STATE_INICIAL = {
   nombre: "",
@@ -40,7 +41,7 @@ const Docentes = () => {
     }
   } */
  const [error,setError]=useState(false);
- const {
+/*  const {
   valores,
   errores,
 
@@ -62,12 +63,15 @@ async function crearMaestro(){
     console.error("Error", error.message);
     setError(error.message);
   }
-}
+} */
   return (
     <div>
       <Layout>
         <>
+       <div  css={css`display:flex`} ><Cartita/>
+          <Cartita/></div>
           <h1>Crear Cuenta</h1>
+          
           <form /* onSubmit={handleSubmit} */ noValidate>
             <label htmlFor="nombre">Nombre</label>
             <input
@@ -104,36 +108,36 @@ async function crearMaestro(){
               <legend>Horario</legend>
               <label htmlFor="lunes">
                 Lunes
-                <input type="checkbox" id="lunes" name="lunes" checked={dias.lunes}/>
+                <input type="checkbox" id="lunes" name="lunes" /* checked={dias.lunes} *//>
                 <input type="time" name="lunes"/>
                 <input type="time" name="lunes"/>
               </label>
               <label htmlFor="martes">
                 Martes
-                <input type="checkbox" id="martes" name="martes" checked={dias.martes}/>
+                <input type="checkbox" id="martes" name="martes" /* checked={dias.martes} *//>
                 <input type="time" name="martes"/>
                 <input type="time" name="martes"/>
 
               </label>
               <label htmlFor="miercoles">
                 Miercoles
-                <input type="checkbox" id="miercoles" name="miercoles" checked={dias.miercoles}/>
+                <input type="checkbox" id="miercoles" name="miercoles" /* checked={dias.miercoles} *//>
                 <input type="time" name="miercoles"/>
                 <input type="time" name="miercoles"/>
 
               </label>
               <label htmlFor="jueves">
                 Jueves
-                <input type="checkbox" id="jueves" name="jueves" checked={dias.jueves}/>
+                <input type="checkbox" id="jueves" name="jueves" /* checked={dias.jueves} *//>
                 <input type="time" name="jueves"/>
                 <input type="time" name="jueves"/>
 
               </label>
               <label htmlFor="viernes">
                 Viernes
-                <input type="checkbox" id="viernes" name="viernes" checked={dias.viernes} />
-                {dias.viernes&&<> <input type="time" name="viernes"/>
-                <input type="time" name="viernes"/></>}
+                <input type="checkbox" id="viernes" name="viernes"/*  checked={dias.viernes} */ />
+               {/*  {dias.viernes&&<> <input type="time" name="viernes"/>
+                <input type="time" name="viernes"/></>} */}
                
 
               </label>

@@ -25,8 +25,15 @@ const CrearCuenta = () => {
   } = useValidar(STATE_INICIAL, validarCrearCuenta, crearCuenta);
   const { nombre, email, password, matricula } = valores;
   async function crearCuenta() {
+    const usuario = {
+      nombre,
+      email,
+      matricula,
+      tipo: "alumno",
+    };
     try {
-      await firebase.registrar(nombre, email, password, matricula);
+      await firebase.registrar(nombre, email, password);
+      await firebase.db.collection("usuarios").add(usuario)
       Router.push("/");
     } catch (error) {
       console.error("Error", error.message);
