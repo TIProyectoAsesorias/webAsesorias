@@ -41,7 +41,7 @@ const Cartita=()=> {
           maestro / tutor
         </Typography>
         <Typography variant="body2" component="p">
-        
+        horadelrequeson
         </Typography>
       </CardContent>
       <CardActions>
