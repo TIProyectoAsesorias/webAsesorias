@@ -2,8 +2,11 @@ import React from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
+
 //mwh
+
 //m+a
+
 const Zelda = styled.nav`
   list-style-type: none;
   margin: 20px;
@@ -49,9 +52,7 @@ const Navegacion = () => {
           <li> Gestión Educativa </li>
         </Link>
 
-        <Link href="/">
-          <li> Mensajes </li>
-        </Link>
+       
       </Zelda>
     </nav>
   );

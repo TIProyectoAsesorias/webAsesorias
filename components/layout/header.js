@@ -4,6 +4,7 @@ import { css } from "@emotion/core";
 import Link from "next/link";
 import Navegacion from "./navegacion";
 import { FirebaseContext } from "../../firebase";
+
 const Tete = styled.header`
   background-color: var(--verde);
   padding: 0 0 0;
@@ -21,6 +22,7 @@ const IMG = styled.img`
   margin-left: 28px;
   margin-bottom: 2px;
 `;
+
 //mwh img src
 const Butoun = styled.button`
   background: Transparent;
@@ -31,6 +33,7 @@ const Butoun = styled.button`
   cursor: pointer;
   }
 `;
+
 const Header = () => {
   const { usuario, firebase } = useContext(FirebaseContext);
 console.log(usuario)
@@ -48,6 +51,9 @@ console.log(usuario)
           <>
             <p>Hola {usuario.displayName}</p> 
             <Navegacion />{" "}
+            <Link href="/">
+          <li> Mensajes </li>
+        </Link>
             <Butoun onClick={() => firebase.logOut()}>
               <img src="../static/img/salirsesion.svg" />
             </Butoun>
