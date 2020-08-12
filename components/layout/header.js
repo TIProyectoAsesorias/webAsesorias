@@ -8,10 +8,13 @@ const Tete = styled.header`
   background-color: var(--verde);
   padding: 0 0 0;
   margin: 0 0 0;
+  box-shadow: 0px 5px 7px -4px #000000;
+  -webkit-box-shadow: 0px 5px 7px -4px #000000; 
   h1 {
     font-family: Roboto, sans-serif;
   }
-`;
+  `;
+
 const IMG = styled.img`
   height: 52px;
   margin-top: 15px;
@@ -25,7 +28,7 @@ const Butoun = styled.button`
   margin-left: 10px;
   border: transparent;
   &:hover {
-    cursor: pointer;
+  cursor: pointer;
   }
 `;
 const Header = () => {
@@ -55,7 +58,6 @@ console.log(usuario)
               <Link href="/">
                 <h1></h1>
               </Link>
-
               <>
                 <Link href="/">
                   <a>Login</a>
@@ -71,5 +73,4 @@ console.log(usuario)
     </Tete>
   );
 };
-
 export default Header;
