@@ -26,12 +26,23 @@ const IMG = styled.img`
 //mwh img src
 const Butoun = styled.button`
   background: Transparent;
-  margin-top: 15;
-  margin-left: 10px;
-  border: transparent;
+  margin-top: 18;
+  margin-right: 25px;
+  margin-left: 250px;
+  border: transparent; 
   &:hover {
   cursor: pointer;
   }
+`;
+
+const Boutoundouex = styled.button`
+background: Transparent;
+margin-top: 15;
+margin-left: 10px;
+border: transparent;
+&:hover {
+cursor: pointer;
+}
 `;
 
 const Header = () => {
@@ -51,11 +62,13 @@ console.log(usuario)
           <>
             <p>Hola {usuario.displayName}</p> 
             <Navegacion />{" "}
-            <Link href="/">
-          <li> Mensajes </li>
-        </Link>
+
+            <Boutoundouex  onClick={() => href="/"()}>
+          <img width="57px" src="../static/img/mensage.svg" />
+        </Boutoundouex>
+
             <Butoun onClick={() => firebase.logOut()}>
-              <img src="../static/img/salirsesion.svg" />
+              <img width="60px" src="../static/img/salirsesion.svg" />
             </Butoun>
           </>
         ) : (
