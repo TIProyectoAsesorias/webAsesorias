@@ -11,12 +11,10 @@ import { FirebaseContext } from "../../firebase";
 const Tete = styled.header`
   background-color: var(--verde);
   position: fixed;
-  diplay: block;
+  display: flex;
   left: 0px;
   top: 0px;
   right: 0px;
-  padding: 100.5 px, 100px;
-
   justify-content: center;
   box-shadow: 0px 5px 7px -4px #000000;
   -webkit-box-shadow: 0px 5px 7px -4px #000000; 
@@ -45,12 +43,6 @@ const Butoun = styled.button`
   cursor: pointer;
   }
 `;
-
-/*margin-top: 15px;
-margin-left: 10px;
-margin-right: 0px;
-position:absolute;
-*/
 
 const Butoundouex = styled.button`
 background: Transparent;
@@ -168,5 +160,4 @@ console.log(usuario)
   );
 };
 
-//<p>kdflsajfklasdjfklña fsa fdas klfdsa klfdasjklf sdlñ fjsdañklf sdañl fjkdsa fsd aflsdkafj asdklñ fasl f alkf dslak fsdja fsd f sdaf sdal fsda fsd lkfsd afklasdjñklfdsjak ñflsd</p>
 export default Header;
