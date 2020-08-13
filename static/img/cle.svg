@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48.767" height="26.6" viewBox="0 0 48.767 26.6">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #313131;
+      }
+    </style>
+  </defs>
+  <path id="ic_vpn_key_24px" class="cls-1" d="M26.824,14.867a13.3,13.3,0,1,0,0,8.867h9.642V32.6h8.867V23.733h4.433V14.867ZM14.3,23.733A4.433,4.433,0,1,1,18.733,19.3,4.446,4.446,0,0,1,14.3,23.733Z" transform="translate(-1 -6)"/>
+</svg>

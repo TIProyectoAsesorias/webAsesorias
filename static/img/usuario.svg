@@ -1,0 +1,31 @@
+<svg id="Composant_12_1" data-name="Composant 12 – 1" xmlns="http://www.w3.org/2000/svg" width="71.181" height="71.181" viewBox="0 0 71.181 71.181">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c3c3c3;
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        fill: #313131;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Groupe_292" data-name="Groupe 292" transform="translate(-1755 -27)">
+    <g id="Ellipse_10" data-name="Ellipse 10" class="cls-1" transform="matrix(0.999, 0.035, -0.035, 0.999, 1763.541, 29.043)">
+      <ellipse class="cls-3" cx="28" cy="33" rx="28" ry="33"/>
+      <ellipse class="cls-4" cx="28" cy="33" rx="27.5" ry="32.5"/>
+    </g>
+    <g id="Ic_usuario" transform="translate(1755 27)">
+      <path id="ic_account_circle_24px" class="cls-2" d="M37.59,2a35.59,35.59,0,1,0,35.59,35.59A35.6,35.6,0,0,0,37.59,2Zm0,10.677A10.677,10.677,0,1,1,26.913,23.354,10.663,10.663,0,0,1,37.59,12.677Zm0,50.538a25.627,25.627,0,0,1-21.354-11.46c.107-7.082,14.236-10.962,21.354-10.962,7.082,0,21.247,3.879,21.354,10.962A25.627,25.627,0,0,1,37.59,63.215Z" transform="translate(-2 -2)"/>
+    </g>
+  </g>
+</svg>

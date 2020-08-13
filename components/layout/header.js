@@ -4,11 +4,20 @@ import { css } from "@emotion/core";
 import Link from "next/link";
 import Navegacion from "./navegacion";
 import { FirebaseContext } from "../../firebase";
+//margin-top:-50px;
+//margin-right: -9px;
+// margin-left: 0px;
 
 const Tete = styled.header`
   background-color: var(--verde);
-  padding: 0 0 0;
-  margin: 0 0 0;
+  position: fixed;
+  diplay: block;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  padding: 100.5 px, 100px;
+
+  justify-content: center;
   box-shadow: 0px 5px 7px -4px #000000;
   -webkit-box-shadow: 0px 5px 7px -4px #000000; 
   h1 {
@@ -21,29 +30,83 @@ const IMG = styled.img`
   margin-top: 15px;
   margin-left: 28px;
   margin-bottom: 2px;
+  display: left;
 `;
 
 //mwh img src
 const Butoun = styled.button`
   background: Transparent;
-  margin-top: 18;
+  margin-top: -65px;
   margin-right: 25px;
-  margin-left: 250px;
-  border: transparent; 
+  margin-left: 0px;
+  border: transparent;
+  position: static; 
   &:hover {
   cursor: pointer;
   }
 `;
 
-const Boutoundouex = styled.button`
-background: Transparent;
-margin-top: 15;
+/*margin-top: 15px;
 margin-left: 10px;
+margin-right: 0px;
+position:absolute;
+*/
+
+const Butoundouex = styled.button`
+background: Transparent;
+float: right;
+position: relative;
+left: 770px;
+top: 7px;
+right:0;
+text-align: right;
 border: transparent;
 &:hover {
 cursor: pointer;
 }
 `;
+
+const Butountrois= styled.headerlettre`
+background: Transparent;
+border: transparent;
+margin-top: 22px;
+margin-left: 830px;
+margin-right: 0px;
+margin-bottom: -20px;
+display: inline;
+text-align: center;
+position: static;
+vertical-align: middle;
+display: inline-block;
+list-style-type: none;
+
+li {
+  display: center;
+  margin-left: 40px;
+  font-family: var(--unnamed-font-family-roboto);
+  font-style: var(--unnamed-font-style-regular);
+  font-size: var(--unnamed-font-size-30);
+  line-height: var(--unnamed-line-spacing-37);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-f1f1f1);
+  vertical-align: middle;
+  }
+`;
+
+const ING = styled.img`
+background: Transparent;
+border: transparent;
+float: left;
+margin-right: 10px;
+margin-left: 6px;
+margin-top: -10px;
+text-align: center;
+position: static;
+vertical-align: middle;
+display: inline-block;
+list-style-type: none;
+`;
+
 
 const Header = () => {
   const { usuario, firebase } = useContext(FirebaseContext);
@@ -57,19 +120,31 @@ console.log(usuario)
         `}
       >
         <IMG src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
-
+       
         {usuario ? (
           <>
-            <p>Hola {usuario.displayName}</p> 
-            <Navegacion />{" "}
+         
+        <Butoundouex  onClick={() => href="/"()}>
+        <img width="57px" src="../static/img/mensage.svg" />
+        </Butoundouex>
 
-            <Boutoundouex  onClick={() => href="/"()}>
-          <img width="57px" src="../static/img/mensage.svg" />
-        </Boutoundouex>
+        
+        <Butountrois  width="57px">
+          
+        <headerlettre>Hola {usuario.displayName}
+        <ING width="57px" src="../static/img/usuario.svg" />
+          </headerlettre> 
+        </Butountrois>
+        
 
-            <Butoun onClick={() => firebase.logOut()}>
-              <img width="60px" src="../static/img/salirsesion.svg" />
-            </Butoun>
+        <Navegacion />{" "}
+
+
+        <Butoun onClick={() => firebase.logOut()}>
+          <img width="60px" src="../static/img/salirsesion.svg" />
+        </Butoun>
+          
+            
           </>
         ) : (
           <>
@@ -92,4 +167,6 @@ console.log(usuario)
     </Tete>
   );
 };
+
+//<p>kdflsajfklasdjfklña fsa fdas klfdsa klfdasjklf sdlñ fjsdañklf sdañl fjkdsa fsd aflsdkafj asdklñ fasl f alkf dslak fsdja fsd f sdaf sdal fsda fsd lkfsd afklasdjñklfdsjak ñflsd</p>
 export default Header;

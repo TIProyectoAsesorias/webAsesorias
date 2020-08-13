@@ -11,11 +11,13 @@ const Zelda = styled.nav`
   list-style-type: none;
   margin: 20px;
   float: left;
+  margin-left: 260px;
   margin-right: 5px;
-  margin-top: 18px;
+  margin-top: -53px;
   display: inline;
   padding: 5px;
-  li {
+  
+   li {
     display: inline-block;
     margin-left: 40px;
     font-family: var(--unnamed-font-family-roboto);
@@ -31,25 +33,23 @@ const Zelda = styled.nav`
 `;
 
 const Navegacion = () => {
-  //mwh conts sol ges men
-  const Solicitud = "Sol";
-  const Gestion = "Ges";
-  const Mensaje = "Men";
+
   //mwh
   return (
     <nav
       css={css`
         flex: 1 1 auto;
         align-content: left;
+        content: fixed;
       `}
     >
       <Zelda>
         <Link href="/solicitudes">
-          <li> Solicitudes </li>
+        <li> Solicitudes </li>
         </Link>
 
         <Link href="/gestioneducativa">
-          <li> Gestión Educativa </li>
+        <li> Gestión Educativa </li>
         </Link>
 
        
