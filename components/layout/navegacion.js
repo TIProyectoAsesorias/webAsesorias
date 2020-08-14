@@ -36,9 +36,10 @@ const Navegacion = () => {
   return (
     <nav
       css={css`
-        flex: 1 1 auto;
+        flex: 1 1 auto; 
         align-content: left;
       `}
+      role="Navegacion"
     >
       <Zelda>
         <Link href="/solicitudes">

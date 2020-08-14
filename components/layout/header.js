@@ -57,7 +57,7 @@ console.log(usuario)
               </Link>
 
               <>
-                <Link href="/">
+                <Link href="/login">
                   <a>Login</a>
                 </Link>
                 <Link href="/crear-cuenta">
