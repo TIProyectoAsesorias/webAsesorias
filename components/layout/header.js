@@ -102,7 +102,6 @@ list-style-type: none;
 
 const Header = () => {
   const { usuario, firebase } = useContext(FirebaseContext);
-console.log(usuario)
   return (
     <Tete>
       <div
@@ -110,20 +109,22 @@ console.log(usuario)
           display: flex;
           flex-wrap: wrap;
         `}
+        role="existir"
       >
+       
         <IMG src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
        
         {usuario ? (
-          <>
+          < >
          
-        <Butoundouex  onClick={() => href="/"()}>
+        <Butoundouex  >
         <img width="57px" src="../static/img/mensage.svg" />
         </Butoundouex>
 
-        
+        <p>Hola {usuario.displayName}</p>
         <Butountrois  width="57px">
           
-        <headerlettre>Hola {usuario.displayName}
+        <headerlettre data-testid="user">Hola {usuario.displayName}
         <ING width="57px" src="../static/img/usuario.svg" />
           </headerlettre> 
         </Butountrois>

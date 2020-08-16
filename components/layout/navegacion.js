@@ -3,9 +3,7 @@ import Link from "next/link";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 
-//mwh
 
-//m+a
 
 const Zelda = styled.nav`
   list-style-type: none;
@@ -45,10 +43,11 @@ const Navegacion = () => {
       role="Navegacion"
     >
       <Zelda>
+        <div className="bellTest">
         <Link href="/solicitudes">
         <li> Solicitudes </li>
         </Link>
-
+        </div>
         <Link href="/gestioneducativa">
         <li> Gestión Educativa </li>
         </Link>

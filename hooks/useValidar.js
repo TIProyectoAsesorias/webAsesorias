@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 const useValidar = (stateInicial, validar, fn) => {
   const [valores, setValores] = useState(stateInicial);
   const [errores, setErrores] = useState({});
@@ -40,5 +41,9 @@ const useValidar = (stateInicial, validar, fn) => {
     handleChange,handleBlur
   };
 };
-
+useValidar.propTypes = {
+  stateInicial:PropTypes.object.isRequired,
+  validar:PropTypes.func.isRequired,
+  fn:PropTypes.func.isRequired
+};
 export default useValidar;

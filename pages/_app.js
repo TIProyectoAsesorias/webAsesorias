@@ -1,6 +1,7 @@
 import App from 'next/app';
 import firebase,{FirebaseContext} from '../firebase'
 import useAutenticacion from '../hooks/useAutenticacion';
+import PropTypes from 'prop-types';
 const MyApp=props=>{
 const usuario=useAutenticacion();
     const {Component,pageProps}=props;
@@ -17,3 +18,7 @@ const usuario=useAutenticacion();
     )
 }
 export default MyApp;
+/*usuario.propTypes = {
+   Component:PropTypes.any,
+   pageProps:PropTypes.object
+  };*/
