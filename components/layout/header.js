@@ -4,9 +4,6 @@ import { css } from "@emotion/core";
 import Link from "next/link";
 import Navegacion from "./navegacion";
 import { FirebaseContext } from "../../firebase";
-//margin-top:-50px;
-//margin-right: -9px;
-// margin-left: 0px;
 
 const Tete = styled.header`
   background-color: var(--verde);
@@ -25,8 +22,8 @@ const Tete = styled.header`
 
 const IMG = styled.img`
   height: 52px;
-  margin-top: 15px;
-  margin-left: 28px;
+  margin-top: 2px;
+  margin-left: -712px;
   margin-bottom: 2px;
   display: left;
 `;
@@ -85,6 +82,29 @@ li {
   }
 `;
 
+const Beginer = styled.headerlettre`
+float: right;
+margin-top: -40px;
+margin-left: 0px;
+margin-right: -1170px;
+text-align:center;
+&:hover {
+  cursor: pointer;
+  }
+`; 
+
+const Begineres = styled.headerlettre`
+float: right;
+margin-top: -40px;
+margin-left: 200px;
+margin-right: -1070px;
+margin-down: 1000px;
+text-align:center;
+&:hover {
+  cursor: pointer;
+  }
+`; 
+
 const ING = styled.img`
 background: Transparent;
 border: transparent;
@@ -98,6 +118,7 @@ vertical-align: middle;
 display: inline-block;
 list-style-type: none;
 `;
+
 
 
 const Header = () => {
@@ -117,7 +138,7 @@ const Header = () => {
         {usuario ? (
           < >
          
-        <Butoundouex  >
+        <Butoundouex>
         <img width="57px" src="../static/img/mensage.svg" />
         </Butoundouex>
 
@@ -134,10 +155,8 @@ const Header = () => {
 
 
         <Butoun onClick={() => firebase.logOut()}>
-          <img width="60px" src="../static/img/salirsesion.svg" />
-        </Butoun>
-          
-            
+        <img width="60px" src="../static/img/salirsesion.svg" />
+        </Butoun>  
           </>
         ) : (
           <>
@@ -146,13 +165,15 @@ const Header = () => {
                 <h1></h1>
               </Link>
               <>
-                <Link href="/login">
-                  <a>Login</a>
-                </Link>
-                <Link href="/crear-cuenta">
-                  <a>Crear cuenta</a>
-                </Link>
+                <Beginer text-align="center" href="/login">
+                <nav1>  <headerlettre>Login</headerlettre></nav1>
+                </Beginer>
+
+                <Begineres href="/crear-cuenta">
+                  <headerlettre>Crear cuenta</headerlettre>
+                </Begineres>
               </>
+              
             </div>
           </>
         )}

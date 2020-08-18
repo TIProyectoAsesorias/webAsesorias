@@ -23,7 +23,7 @@ const Layout = (props) => {
             --unnamed-font-family-segoe-ui: Segoe UI;
             --unnamed-font-style-regular: Regular;
             --unnamed-font-size-30: 20px;
-            --unnamed-font-size-44: 44px;
+            --unnamed-font-size-44: 35px;
             --unnamed-font-size-90: 75px;
             --unnamed-character-spacing-0: 0px;
             --unnamed-line-spacing-37: 37px;
@@ -33,6 +33,8 @@ const Layout = (props) => {
           }
 
           /* Character Styles */
+
+
           headerlettre {
             font-family: var(--unnamed-font-family-roboto);
             font-style: var(--unnamed-font-style-regular);

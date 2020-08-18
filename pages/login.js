@@ -35,7 +35,7 @@ const Login = () => {
     <div>
       <Layout>
         <>
-          <h1>Login</h1>
+          <h1>Logon</h1>
           <form onSubmit={handleSubmit} noValidate>
             <label htmlFor="password">Contraseña</label>
             <input
