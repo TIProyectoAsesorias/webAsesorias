@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const MyApp=props=>{
 const usuario=useAutenticacion();
     const {Component,pageProps}=props;
+    
     return (
         <FirebaseContext.Provider
         value={

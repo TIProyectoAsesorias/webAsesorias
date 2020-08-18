@@ -142,10 +142,10 @@ const Header = () => {
         <img width="57px" src="../static/img/mensage.svg" />
         </Butoundouex>
 
-        <p>Hola {usuario.displayName}</p>
+        
         <Butountrois  width="57px">
           
-        <headerlettre data-testid="user">Hola {usuario.displayName}
+        <headerlettre data-testid="user">Hola {usuario.nombre}
         <ING width="57px" src="../static/img/usuario.svg" />
           </headerlettre> 
         </Butountrois>

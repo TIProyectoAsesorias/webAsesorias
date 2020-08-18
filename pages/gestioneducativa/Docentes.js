@@ -58,6 +58,9 @@ const Docentes = () => {
     if (!usuario) {
       return router.push("/login");
     }
+  /*   else if(usuario.tipo!=="admin"){
+
+    } */
     const maestro = {
       nombre,
       email,
