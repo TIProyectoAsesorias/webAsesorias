@@ -13,7 +13,7 @@ const renderProvider=(usuario)=>{
 }
 describe("Header",()=>{
     it("Usuario Existe",()=>{
-        const usuario={displayName:"angel",otro:null}
+        const usuario={nombre:"angel",otro:null}
         renderProvider(usuario);
         expect(
             screen.getByRole("existir")
