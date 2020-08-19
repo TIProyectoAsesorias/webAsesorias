@@ -17,12 +17,14 @@ const Layout = (props) => {
             --negrogris: #313131;
             --gristransparencia: #000000;
             --blancogris: #f6f6f6;
+            --black: #000000B8;
 
             /* Font/text values */
             --unnamed-font-family-roboto: Roboto;
             --unnamed-font-family-segoe-ui: Segoe UI;
             --unnamed-font-style-regular: Regular;
             --unnamed-font-size-30: 20px;
+            --unnamed-font-size-20:  19;
             --unnamed-font-size-44: 35px;
             --unnamed-font-size-90: 75px;
             --unnamed-character-spacing-0: 0px;
@@ -30,6 +32,7 @@ const Layout = (props) => {
             --unnamed-line-spacing-40: 40px;
             --unnamed-line-spacing-53: 53px;
             --unnamed-line-spacing-109: 109px;
+           --unnamed-font-size-35; 35px;
           }
 
           /* Character Styles */
@@ -42,6 +45,22 @@ const Layout = (props) => {
             line-height: var(--unnamed-line-spacing-37);
             letter-spacing: var(--unnamed-character-spacing-0);
             color: var(--unnamed-color-f1f1f1);
+          }
+          lettre {
+            font-family: var(--unnamed-font-family-roboto);
+            font-style: var(--unnamed-font-style-regular);
+            font-size: var(--unnamed-font-size-30);
+            line-height: var(--unnamed-line-spacing-37);
+            letter-spacing: var(--unnamed-character-spacing-0);
+            color: var(--unnamed-color-#000000B8);
+          }
+          lettres {
+            font-family: var(--unnamed-font-family-roboto);
+            font-style: var(--unnamed-font-style-regular);
+            font-size: var(--unnamed-font-size-35);
+            line-height: var(--unnamed-line-spacing-37);
+            letter-spacing: var(--unnamed-character-spacing-0);
+            color: var(--unnamed-color-#000000B8);
           }
 
           h2 {
@@ -70,7 +89,8 @@ const Layout = (props) => {
             letter-spacing: var(--unnamed-character-spacing-0);
             color: var(--negrogris);
           }
-
+  
+         }
           @font-face {
             src: url("public/static/fonts/Segoe UI.ttf");
             font-family: segoe-ui;

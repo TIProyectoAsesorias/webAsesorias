@@ -8,6 +8,7 @@ import { FirebaseContext } from "../../firebase";
 const Tete = styled.header`
   background-color: var(--verde);
   position: fixed;
+  overflow:hidden;
   display: flex;
   left: 0px;
   top: 0px;
@@ -166,7 +167,7 @@ const Header = () => {
               </Link>
               <>
                 <Beginer text-align="center" href="/login">
-                <nav1>  <headerlettre>Login</headerlettre></nav1>
+                  <headerlettre>Login</headerlettre>
                 </Beginer>
 
                 <Begineres href="/crear-cuenta">
