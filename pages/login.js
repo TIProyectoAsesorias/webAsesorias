@@ -7,6 +7,81 @@ import React, { useState } from "react";
 import { css } from "@emotion/core";
 import validarLogin from "../validar/validarLogin";
 //import { Formulario, Campo, InputSub, Error } from "../components/ui/Forms";
+
+const Form = styled.form`
+margin: 180px auto;
+width:300px;
+height: 267px;
+top: 180px;
+position:relative;
+padding: 20px 30px;
+background-color: #F6F6F6;
+border-radius: 10px;
+box-shadow: 0 0 7px 0 #000;
+margin: auto;
+`;
+
+const Input = styled.input`
+width: 300px;
+margin-left: -4px;
+height: 40px;
+margin-bottom: 20px;
+border-radius: 10px;
+text-align: center;
+border: solid 1px #707070;
+`;
+
+const Inpux = styled.input`
+width: 361px;
+text-align: center;
+display: center;
+height: 55px;
+margin-left: -30px;
+border-radius: 10px;
+margin-top: 18px;
+margin-bottom: -55px;
+background: linear-gradient(180deg, #D9D9D9 0%, #999999 100%);
+border: none;
+font-family: var(--unnamed-font-family-roboto);
+  font-style: var(--unnamed-font-style-regular);
+  font-size: var(--unnamed-font-size-30);
+  line-height: var(--unnamed-line-spacing-37);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-#000000B8);
+  &:hover {
+    cursor: pointer;
+    }
+hover{
+background: linear-gradient(180deg,#999999  0%, #D9D9D9 100%)
+
+}
+`;
+
+
+const IMG = styled.img`
+margin-right: 10px;
+margin-left: -30px;
+`;
+const IMGe = styled.img`
+margin-right: 35px;
+margin-left:-50px;
+`;
+const Label = styled.label`
+margin-left: 10px;
+vertical-align:top;
+position: center;
+margin-bottom: 50px;
+margin-top: 50px;
+padding-bottom:50px;
+`;
+const Labele = styled.label`
+margin-left: 0px;
+vertical-align:top;
+position: center;
+margin-bottom: 60px;
+margin-top: 50px;
+padding-bottom:50px;
+`;
 const STATE_INICIAL = {
   email: "",
   password: "",
@@ -35,30 +110,31 @@ const Login = () => {
     <div>
       <Layout>
         <>
-          <h1>Logon</h1>
-          <form onSubmit={handleSubmit} noValidate>
-            <label htmlFor="password">Contraseña</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Contraseña"
-              value={password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <label htmlFor="correo">Correo</label>
-            <input
+          <Form onSubmit={handleSubmit} noValidate>
+
+          <label htmlFor="correo"><lettre><IMG width="40px" src="../static/img/ic_usuario.svg" /><Label>Correo Electrónico</Label></lettre></label>
+            <Input
               type="email"
               id="email"
-              placeholder="correo"
+              placeholder=""
               name="email"
               value={email}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <input type="submit" value="Login" />
-          </form>
+            <label htmlFor="password"><lettre><IMGe width="40px" src="../static/img/ic_key.svg" /><Labele>Contraseña</Labele></lettre></label>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              placeholder=""
+              value={password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+           
+           <Inpux type="submit" value="Iniciar sesión" />
+          </Form>
         </>
       </Layout>
     </div>

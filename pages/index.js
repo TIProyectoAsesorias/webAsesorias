@@ -8,8 +8,6 @@ position:flex;
   `;
 
 const Home =() => (
-  
-
   <div >
     <Layout>
      <Navo><h1>¡Bienvenido a AS!</h1></Navo>

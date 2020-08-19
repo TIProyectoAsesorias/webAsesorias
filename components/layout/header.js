@@ -22,9 +22,10 @@ const Tete = styled.header`
   `;
 
 const IMG = styled.img`
+position:block;
   height: 52px;
   margin-top: 2px;
-  margin-left: -712px;
+  margin-left: -650px;
   margin-bottom: 2px;
   display: left;
 `;
@@ -32,9 +33,9 @@ const IMG = styled.img`
 //mwh img src
 const Butoun = styled.button`
   background: Transparent;
-  margin-top: -65px;
-  margin-right: 25px;
-  margin-left: 0px;
+  margin-top: 10px;
+  margin-right: -70px;
+  margin-left: 30px;
   border: transparent;
   position: static; 
   &:hover {
@@ -86,8 +87,8 @@ li {
 const Beginer = styled.headerlettre`
 float: right;
 margin-top: -40px;
-margin-left: 0px;
-margin-right: -1170px;
+margin-left: -300px;
+margin-right: -880px;
 text-align:center;
 &:hover {
   cursor: pointer;
@@ -95,10 +96,11 @@ text-align:center;
 `; 
 
 const Begineres = styled.headerlettre`
+position: block;
 float: right;
 margin-top: -40px;
-margin-left: 200px;
-margin-right: -1070px;
+margin-left: 140px;
+margin-right: -1030px;
 margin-down: 1000px;
 text-align:center;
 &:hover {
@@ -142,7 +144,6 @@ const Header = () => {
         <Butoundouex>
         <img width="57px" src="../static/img/mensage.svg" />
         </Butoundouex>
-
         
         <Butountrois  width="57px">
           
@@ -151,9 +152,7 @@ const Header = () => {
           </headerlettre> 
         </Butountrois>
         
-
         <Navegacion />{" "}
-
 
         <Butoun onClick={() => firebase.logOut()}>
         <img width="60px" src="../static/img/salirsesion.svg" />
@@ -166,8 +165,8 @@ const Header = () => {
                 <h1></h1>
               </Link>
               <>
-                <Beginer text-align="center" href="/login">
-                  <headerlettre>Login</headerlettre>
+                <Beginer text-align="center" href="/Login">
+                  <headerlettre>Iniciar sesión</headerlettre>
                 </Beginer>
 
                 <Begineres href="/crear-cuenta">
