@@ -23,7 +23,7 @@ const Layout = (props) => {
             --unnamed-font-family-roboto: Roboto;
             --unnamed-font-family-segoe-ui: Segoe UI;
             --unnamed-font-style-regular: Regular;
-            --unnamed-font-size-30: 20px;
+            --unnamed-font-size-30: 18px;
             --unnamed-font-size-20:  19;
             --unnamed-font-size-44: 35px;
             --unnamed-font-size-90: 75px;

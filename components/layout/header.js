@@ -6,6 +6,7 @@ import Navegacion from "./navegacion";
 import { FirebaseContext } from "../../firebase";
 
 const Tete = styled.header`
+  align-items: center;
   background-color: var(--verde);
   position: fixed;
   overflow:hidden;
@@ -22,20 +23,28 @@ const Tete = styled.header`
   `;
 
 const IMG = styled.img`
-position:block;
   height: 52px;
   margin-top: 2px;
-  margin-left: -650px;
+  margin-left: -640px;
   margin-bottom: 2px;
+  display: left;
+`;
+
+const IMGE = styled.img`
+  height: 52px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-right: 800px;
   display: left;
 `;
 
 //mwh img src
 const Butoun = styled.button`
   background: Transparent;
-  margin-top: 10px;
-  margin-right: -70px;
-  margin-left: 30px;
+  margin-top: -85px;
+  margin-right: 25px;
+  margin-left: 0px;
   border: transparent;
   position: static; 
   &:hover {
@@ -60,10 +69,10 @@ cursor: pointer;
 const Butountrois= styled.headerlettre`
 background: Transparent;
 border: transparent;
-margin-top: 22px;
-margin-left: 830px;
+margin-top: -65px;
+margin-left: 1010px;
 margin-right: 0px;
-margin-bottom: -20px;
+margin-bottom: -10px;
 display: inline;
 text-align: center;
 position: static;
@@ -84,30 +93,30 @@ li {
   }
 `;
 
-const Beginer = styled.headerlettre`
-float: right;
-margin-top: -40px;
-margin-left: -300px;
-margin-right: -880px;
-text-align:center;
-&:hover {
-  cursor: pointer;
-  }
-`; 
-
 const Begineres = styled.headerlettre`
 position: block;
 float: right;
 margin-top: -40px;
-margin-left: 140px;
-margin-right: -1030px;
-margin-down: 1000px;
+margin-left: 190px;
+margin-right: -880px;
+margin-down: 1030px;
+text-align:center;
+&:hover {
+  cursor: pointer;
+  }
+`; 
+const Beginer = styled.headerlettre`
+float: right;
+margin-top: -40px;
+margin-left: 0px;
+margin-right: -1040px;
 text-align:center;
 &:hover {
   cursor: pointer;
   }
 `; 
 
+//usuario imagen y saludo al
 const ING = styled.img`
 background: Transparent;
 border: transparent;
@@ -121,9 +130,6 @@ vertical-align: middle;
 display: inline-block;
 list-style-type: none;
 `;
-
-
-
 const Header = () => {
   const { usuario, firebase } = useContext(FirebaseContext);
   return (
@@ -134,22 +140,18 @@ const Header = () => {
           flex-wrap: wrap;
         `}
         role="existir"
+      
       >
-       
-        <IMG src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
-       
+
         {usuario ? (
+          
           < >
-         
-        <Butoundouex>
-        <img width="57px" src="../static/img/mensage.svg" />
-        </Butoundouex>
+         <IMGE src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
         
         <Butountrois  width="57px">
-          
         <headerlettre data-testid="user">Hola {usuario.nombre}
         <ING width="57px" src="../static/img/usuario.svg" />
-          </headerlettre> 
+        </headerlettre> 
         </Butountrois>
         
         <Navegacion />{" "}
@@ -160,18 +162,21 @@ const Header = () => {
           </>
         ) : (
           <>
+          <IMG src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
             <div>
+            
               <Link href="/">
+            
                 <h1></h1>
               </Link>
               <>
-                <Beginer text-align="center" href="/Login">
+                <Begineres text-align="center" href="/Login">
                   <headerlettre>Iniciar sesión</headerlettre>
-                </Beginer>
-
-                <Begineres href="/crear-cuenta">
-                  <headerlettre>Crear cuenta</headerlettre>
                 </Begineres>
+
+                <Beginer href="/crear-cuenta">
+                  <headerlettre>Crear cuenta</headerlettre>
+                </Beginer>
               </>
               
             </div>

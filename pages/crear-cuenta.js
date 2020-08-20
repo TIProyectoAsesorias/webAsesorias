@@ -77,8 +77,6 @@ font-family: var(--unnamed-font-family-roboto);
     cursor: pointer;
     }
 `;
-
-
 const STATE_INICIAL = {
   nombre: "",
   matricula: "",
@@ -164,7 +162,7 @@ const CrearCuenta = () => {
               onBlur={handleBlur}
             />
 
-            <Inpux type="submit" value="Crear" />
+            <Inpux type="submit" value="Confirmar" />
 
             </Ul>
           </Form>

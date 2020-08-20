@@ -3,16 +3,19 @@ import Link from "next/link";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 
+const Li = styled.li`
+display: inline-block;
+`;
 
-
-const Zelda = styled.nav`
+const Zelda = styled.ul`
   list-style-type: none;
+  justify-content: space-between;
   margin: 20px;
   float: left;
   margin-left: 260px;
   margin-right: 5px;
-  margin-top: -53px;
-  display: inline;
+  margin-top: -68px;
+  display: flex;
   padding: 5px;
   
    li {
@@ -45,14 +48,12 @@ const Navegacion = () => {
       <Zelda>
         <div className="bellTest">
         <Link href="/solicitudes">
-        <li> Solicitudes </li>
+        <Li> Solicitudes </Li>
         </Link>
         </div>
         <Link href="/gestioneducativa">
-        <li> Gestión Educativa </li>
+        <Li> Gestión Educativa </Li>
         </Link>
-
-       
       </Zelda>
     </nav>
   );
