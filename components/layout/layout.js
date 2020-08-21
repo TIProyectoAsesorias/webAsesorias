@@ -25,7 +25,7 @@ const Layout = (props) => {
             --unnamed-font-style-regular: Regular;
             --unnamed-font-size-30: 18px;
             --unnamed-font-size-20:  19;
-            --unnamed-font-size-44: 35px;
+            --unnamed-font-size-44: 30px;
             --unnamed-font-size-90: 75px;
             --unnamed-character-spacing-0: 0px;
             --unnamed-line-spacing-37: 37px;

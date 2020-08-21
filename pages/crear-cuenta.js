@@ -73,7 +73,7 @@ font-family: var(--unnamed-font-family-roboto);
   line-height: var(--unnamed-line-spacing-37);
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-#000000B8);
-  &:hover {
+&:hover {
     cursor: pointer;
     }
 `;

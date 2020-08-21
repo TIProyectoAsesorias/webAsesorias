@@ -9,6 +9,7 @@ const Tete = styled.header`
   align-items: center;
   background-color: var(--verde);
   position: fixed;
+  height: 70px;
   overflow:hidden;
   display: flex;
   left: 0px;
