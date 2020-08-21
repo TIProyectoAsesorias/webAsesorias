@@ -76,6 +76,12 @@ font-family: var(--unnamed-font-family-roboto);
 &:hover {
     cursor: pointer;
     }
+    &:hover{
+      background: linear-gradient(180deg,#D9D9D9  0%, #D9D9D9 100%)
+      }
+      &:active {
+        color: #006933;
+      } 
 `;
 const STATE_INICIAL = {
   nombre: "",
@@ -138,8 +144,7 @@ const CrearCuenta = () => {
               placeholder=""
               value={matricula}
               onChange={handleChange}
-              onBlur={handleBlur}
-            />
+              onBlur={handleBlur}/>
             
             <label htmlFor="password"><lettre>Contraseña</lettre></label>
             <Input

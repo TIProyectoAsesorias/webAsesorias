@@ -21,6 +21,11 @@ border: 1px solid #707070B0 ;
 &:hover {
   cursor: pointer;
   }
+&:active {
+  color: #006933;
+} 
+&:hover { background:  #f6f6f6;
+}
 `;
 
 const Espace = styled.div`
@@ -36,8 +41,8 @@ const GestionEdu =() => (
     <Espace></Espace>
     <nav>
     <h1>Gestión educativa</h1>
-    <Li><Linke href="/gestioneducativa/Docentes"><lettre>Docentes</lettre></Linke></Li>
-    <Li><Linke href="/gestioneducativa/Materias"><lettre>Materias</lettre></Linke></Li>
+    <Li><Linke><Link href="/gestioneducativa/Docentes"><lettre>Docentes</lettre></Link></Linke></Li>
+    <Li><Linke><Link href="/gestioneducativa/Materias"><lettre>Materias</lettre></Link></Linke></Li>
     </nav>
     </Layout>
   </div>

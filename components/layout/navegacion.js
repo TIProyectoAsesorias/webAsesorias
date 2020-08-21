@@ -31,6 +31,9 @@ const Zelda = styled.ul`
       cursor: pointer;
     }
   }
+  &:active {
+    color: #006933;
+  }
 `;
 
 const Navegacion = () => {
