@@ -4,6 +4,7 @@ import useValidar from "../hooks/useValidar";
 import styled from "@emotion/styled";
 import firebase from "../firebase";
 import React, { useState } from "react";
+
 import { css } from "@emotion/core";
 import validarLogin from "../validar/validarLogin";
 import Error from "../components/ui/Error";
@@ -52,10 +53,13 @@ font-family: var(--unnamed-font-family-roboto);
   &:hover {
     cursor: pointer;
     }
-hover{
-background: linear-gradient(180deg,#999999  0%, #D9D9D9 100%)
-
+&:hover{
+background: linear-gradient(180deg,#D9D9D9  0%, #D9D9D9 100%)
 }
+&:active {
+  color: #006933;
+} 
+
 `;
 
 

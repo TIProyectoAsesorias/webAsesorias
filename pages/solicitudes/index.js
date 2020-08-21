@@ -25,6 +25,11 @@ border: 1px solid #707070B0 ;
 &:hover {
   cursor: pointer;
   }
+  &:active {
+    color: #006933;
+  } 
+  &:hover { background:  #f6f6f6;
+  }
 `;
 
 const Espace = styled.div`
@@ -43,9 +48,9 @@ const Solicitudes =() => (
       <nav>
     <h1>Solicitudes</h1>
     <ul>
-    <Li><Linke href="/solicitudes/pendientes"><lettre>Pendientes</lettre></Linke></Li>
+    <Li><Linke><Link href="/solicitudes/pendientes"><lettre>Pendientes</lettre></Link></Linke></Li>
     
-    <Li><Linke href="/solicitudes/confimadas"><lettre>Confirmadas</lettre></Linke></Li>
+    <Li><Linke><Link href="/solicitudes/confimadas"><lettre>Confirmadas</lettre></Link></Linke></Li>
     </ul>
     </nav>
     </Layout>

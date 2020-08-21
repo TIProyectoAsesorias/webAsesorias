@@ -51,6 +51,8 @@ const Butoun = styled.button`
   &:hover {
   cursor: pointer;
   }
+  &:active {
+    color: #006933;}
 `;
 
 const Butoundouex = styled.button`
@@ -65,6 +67,8 @@ border: transparent;
 &:hover {
 cursor: pointer;
 }
+&:active {
+  color: #006933;}
 `;
 
 const Butountrois= styled.headerlettre`
@@ -80,7 +84,6 @@ position: static;
 vertical-align: middle;
 display: inline-block;
 list-style-type: none;
-
 li {
   display: center;
   margin-left: 40px;
@@ -105,6 +108,8 @@ text-align:center;
 &:hover {
   cursor: pointer;
   }
+  &:active {
+    color: #006933;}
 `; 
 const Beginer = styled.headerlettre`
 float: right;
@@ -115,6 +120,8 @@ text-align:center;
 &:hover {
   cursor: pointer;
   }
+  &:active {
+    color: #006933;}
 `; 
 
 //usuario imagen y saludo al
@@ -146,8 +153,8 @@ const Header = () => {
 
         {usuario ? (
           
-          < >
-         <IMGE src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
+        < >
+        <IMGE src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
         
         <Butountrois  width="57px">
         <headerlettre data-testid="user">Hola {usuario.nombre}
@@ -171,12 +178,15 @@ const Header = () => {
                 <h1></h1>
               </Link>
               <>
-                <Begineres text-align="center" href="/Login">
+              <Begineres>
+                <Link text-align="center" href="/login">
                   <headerlettre>Iniciar sesión</headerlettre>
+                </Link>
                 </Begineres>
-
-                <Beginer href="/crear-cuenta">
+                <Beginer>
+                <Link href="/crear-cuenta">
                   <headerlettre>Crear cuenta</headerlettre>
+                </Link>
                 </Beginer>
               </>
               
