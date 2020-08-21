@@ -33,11 +33,13 @@ list-style: none;
 const GestionEdu =() => (
   <div>
     <Layout>
-      <nav>
-        <Link href="/gestioneducativa/Docentes1">Docentes</Link>
-        <Link href="/gestioneducativa/Materias">Materias</Link>
-      </nav>
+    <Espace></Espace>
+    <nav>
     <h1>Gestión educativa</h1>
+    
+    <Li><Linke href="/gestioneducativa/Docentes1"><lettre>Docentes</lettre></Linke></Li>
+    <Li><Linke ><Link href="/gestioneducativa/Materias"><lettre>Materias</lettre></Link></Linke></Li>
+    </nav>
     </Layout>
   </div>
 );

@@ -25,7 +25,7 @@ const STATE_INICIAL = {
 };
 const RegistrarMateria = () => {
   const { usuario } = useContext(FirebaseContext);
-  console.log(usuario.tipo)
+/*   console.log(usuario.tipo) */
   const [maestros, setMaestros] = useState([]);
   const [maestro, setMaestro] = useState("");
   const [validado, setValidado] = useState(false);
@@ -55,10 +55,10 @@ const RegistrarMateria = () => {
     submitForm,
     handleSubmit,
     handleChange,
-    handleBlur,
+    handleBlur,parche
   } = useValidar(STATE_INICIAL, validarMateria, crearMateria);
   const { nombre, tipo } = valores;
-console.log(submitForm);
+console.log(parche);
    function crearMateria() {
     const materia = {
       nombre,
@@ -72,16 +72,16 @@ console.log(submitForm);
       console.error("Error", error.message);
     }
   }
-  function addMaestro() {
+  function addMaestro(e) {
     e.preventDefault();
-    firebase
+    firebase.db
       .collection("materias")
       .where("nombre", "==", nombre)
       .get()
       .then(function (snapshot) {
         snapshot.forEach(function (doc) {
           doc.ref.update({
-            docentes: [...docentes, maestro],
+            docentes: firebase.db.FieldValue.arrayUnion(maestro)
           });
         });
       });
@@ -108,7 +108,7 @@ console.log(submitForm);
             </li>
           </ul>
         </nav>
-        <form onSubmit={handleSubmit} noValidate>
+       { !parche ? (<form onSubmit={handleSubmit} noValidate>
           <label htmlFor="nombre">Nombre</label>
           <input
             type="text"
@@ -131,15 +131,15 @@ console.log(submitForm);
           </select>
           {errores.tipo && <Error msg={errores.tipo} />}
           <input type="submit" value="Crear materia" />
-        </form>
-
-        {<form onSubmit={addMaestro} noValidate>
+          
+        </form>):(
+        <form onSubmit={addMaestro} noValidate>
           <select value={maestro} onChange={handleMaestro} >
             <Maestros />
           </select>
           <input type="submit" value="Añadir maestro" />
-        </form>}
-
+        </form> )}
+        
         <Divisor>
           <Collapse in={validado}>
             <Alert

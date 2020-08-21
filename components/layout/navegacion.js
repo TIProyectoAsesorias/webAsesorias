@@ -10,7 +10,6 @@ display: inline-block;
 `;
 
 const Zelda = styled.ul`
-const Zelda = styled.nav`
   list-style-type: none;
   justify-content: space-between;
   margin: 20px;
