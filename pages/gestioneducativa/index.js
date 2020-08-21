@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../../components/layout/layout'
 import Link from "next/link"
 import styled from "@emotion/styled"
+
 const Linke = styled.button`
 position: flex;
 width: 381px;
@@ -21,29 +22,52 @@ border: 1px solid #707070B0 ;
 &:hover {
   cursor: pointer;
   }
+
 &:active {
   color: #006933;
+  border-radius: 10px;
 } 
+
 &:hover { background:  #f6f6f6;
 }
+
+&:hover{
+  transform: translateX(300px) skewX(-15deg)
+  opacity: .6;
+  transition: .7s;
+  border-radius: 10px;
+  }
 `;
 
 const Espace = styled.div`
 padding-top: 3rem;
 `;
+
 const Li = styled.li`
 list-style: none;
 `;
 
-const GestionEdu =() => (
+const GestionEdu = () => (
   <div>
     <Layout>
-    <Espace></Espace>
-    <nav>
-    <h1>Gestión educativa</h1>
-    <Li><Linke><Link href="/gestioneducativa/Docentes"><lettre>Docentes</lettre></Link></Linke></Li>
-    <Li><Linke><Link href="/gestioneducativa/Materias"><lettre>Materias</lettre></Link></Linke></Li>
-    </nav>
+      <Espace></Espace>
+      <nav>
+        <h1>Gestión educativa</h1>
+        <Li>
+          <Linke>
+            <Link href="/gestioneducativa/Docentes">
+              <lettre>Docentes</lettre>
+            </Link>
+          </Linke>
+          </Li>
+        <Li>
+          <Linke>
+          <Link  href="/gestioneducativa/Materias">
+              <lettre>Materias</lettre>
+          </Link>
+          </Linke>
+        </Li>
+      </nav>
     </Layout>
   </div>
 );

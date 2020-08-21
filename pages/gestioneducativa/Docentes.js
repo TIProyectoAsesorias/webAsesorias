@@ -8,6 +8,7 @@ import { css } from "@emotion/core";
 import validarMaestro from "../../validar/validarMaestro";
 import Cartita from "../../components/ui/Cards";
 //import { Formulario, Campo, InputSub, Error } from "../components/ui/Forms";
+
 const STATE_INICIAL = {
   nombre: "",
   password: "",
@@ -76,9 +77,12 @@ const Docentes = () => {
       setError(error.message);
     }
   }
-
+  const Espace = styled.div`
+  padding-top: 7rem;
+  `;
   return (
     <div>
+<Espace></Espace>
       <Layout>
         <>
           <div
@@ -86,10 +90,11 @@ const Docentes = () => {
               display: flex;
             `}
           >
+      
             <Cartita />
             <Cartita />
           </div>
-          <h1>Crear Cuenta</h1>
+          <h2>Crear Cuenta</h2>
 
           <form onSubmit={handleSubmit} noValidate>
             <label htmlFor="tutor">

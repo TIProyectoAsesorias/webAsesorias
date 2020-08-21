@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
 });
-
+    
 const Cartita=()=> {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
@@ -32,7 +32,7 @@ const Cartita=()=> {
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-         Tecnologias de la informacion
+         Tecnologías de la información
         </Typography>
         <Typography variant="h5" component="h2">
           Milton
@@ -41,7 +41,7 @@ const Cartita=()=> {
           maestro / tutor
         </Typography>
         <Typography variant="body2" component="p">
-        horadelrequeson
+        aestahorasalenduendes
         </Typography>
       </CardContent>
       <CardActions>

@@ -30,6 +30,12 @@ border: 1px solid #707070B0 ;
   } 
   &:hover { background:  #f6f6f6;
   }
+  &:hover{
+    transform: translateX(300px) skewX(-15deg)
+    opacity: .6;
+    transition: .7s;
+    border-radius: 10px;
+    }
 `;
 
 const Espace = styled.div`

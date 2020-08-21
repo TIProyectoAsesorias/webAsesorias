@@ -165,12 +165,12 @@ const Header = () => {
         <Navegacion />{" "}
 
         <Butoun onClick={() => firebase.logOut()}>
-        <img width="60px" src="../static/img/salirsesion.svg" />
+        <img width="60px" src="../static/img/salirsesion.svg"/>
         </Butoun>  
           </>
         ) : (
           <>
-          <IMG src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
+          <IMG src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN"/>
             <div>
             
               <Link href="/">
