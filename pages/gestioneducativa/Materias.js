@@ -11,7 +11,7 @@ const Materias =() => (
       <nav>
     <h1>Materias</h1>
     <Link href="/gestioneducativa">Volver</Link>
-    <button>Registrar Materia</button>
+    <Link href="/gestioneducativa/registrarmateria"><button>Registrar Materia</button></Link>
     <ul>
         <li><button>Materia</button></li>
     </ul>
