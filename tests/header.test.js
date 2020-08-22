@@ -21,6 +21,6 @@ describe("Header",()=>{
     })
     it("Usuario no existe",()=>{
         renderProvider(null);
-        expect(screen.getByText("Login")).toBeVisible();;
+        expect(screen.getByText("Iniciar sesión")).toBeVisible();;
     })
 })

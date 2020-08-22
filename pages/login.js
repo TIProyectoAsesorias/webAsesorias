@@ -7,6 +7,7 @@ import React, { useState } from "react";
 
 import { css } from "@emotion/core";
 import validarLogin from "../validar/validarLogin";
+import Error from "../components/ui/Error";
 //import { Formulario, Campo, InputSub, Error } from "../components/ui/Forms";
 
 const Form = styled.form`
@@ -90,6 +91,7 @@ const STATE_INICIAL = {
 };
 const Login = () => {
   const [error, setError] = useState(false);
+  const [maestro, setMaestro] = useState();
   const {
     valores,
     errores,
@@ -99,11 +101,39 @@ const Login = () => {
     handleBlur,
   } = useValidar(STATE_INICIAL, validarLogin, logIn);
   const { password, email } = valores;
+  function manejarSnapshot(snapshot) {
+    const usuario = snapshot.docs.map((doc) => {
+      return {
+        id: doc.id,
+        ...doc.data(),
+      };
+    });
+
+    setMaestro(usuario[0]);
+  }
+
   async function logIn() {
     try {
-      await firebase.login(email, password);
-      Router.push("/");
-    } catch (error) {
+      firebase.db
+        .collection("usuarios")
+        .where("email", "==", email)
+        .where("tipo", "==", "maestro")
+        .onSnapshot(manejarSnapshot);
+      if (maestro) {
+        try{
+        await firebase.login(email, password);
+        Router.push("/");
+      }
+        catch(error){
+        await firebase.registrar(maestro.nombre, email, password);
+        Router.push("/");}
+      } 
+      else {
+        await firebase.login(email, password);
+        Router.push("/");}
+      
+    } 
+    catch (error) {
       console.error("Error", error.message);
       setError(error.message);
     }
@@ -143,8 +173,25 @@ const Login = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+<<<<<<< HEAD
             <Inpux type="submit" value="Iniciar sesión" />
           </Form>
+=======
+            {errores.password && <Error msg={errores.password} />}
+            <label htmlFor="correo">Correo</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="correo"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {errores.email && <Error msg={errores.email} />}
+            <input type="submit" value="Login" />
+          </form>
+>>>>>>> develop
         </>
       </Layout>
     </div>

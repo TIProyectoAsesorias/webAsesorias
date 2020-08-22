@@ -4,6 +4,7 @@ const useValidar = (stateInicial, validar, fn) => {
   const [valores, setValores] = useState(stateInicial);
   const [errores, setErrores] = useState({});
   const [submitForm, setSubmitForm] = useState(false);
+  const [parche,setParche]=useState(false)
   useEffect(() => {
     if (submitForm) {
       const noError = Object.keys(errores).length === 0;
@@ -27,6 +28,7 @@ const useValidar = (stateInicial, validar, fn) => {
     const erroresValida = validar(valores);
     setErrores(erroresValida);
     setSubmitForm(true);
+    setParche(true);
   };
   //cuando se revisa el evento del blur
   const handleBlur=()=>{
@@ -38,7 +40,7 @@ const useValidar = (stateInicial, validar, fn) => {
     errores,
     submitForm,
     handleSubmit,
-    handleChange,handleBlur
+    handleChange,handleBlur,parche
   };
 };
 useValidar.propTypes = {

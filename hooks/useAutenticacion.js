@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import firebase from "../firebase";
 function useAutenticacion() {
   const [usuarioAut, setUsuarioAut] = useState(null);
-  const [tipo, setTipo] = useState();
+
   useEffect(() => {
     const unsuscribe = firebase.auth.onAuthStateChanged((usuario) => {
       if (usuario) {
@@ -10,7 +10,7 @@ function useAutenticacion() {
         firebase.db
           .collection("usuarios")
           .where("nombre", "==", usuario.displayName)
-          .where("correo","==",usuario.email)
+          .where("email","==",usuario.email)
           .onSnapshot(manejarSnapshot);
         /*    setUsuarioAut(); */
       } else {
@@ -26,7 +26,8 @@ function useAutenticacion() {
         ...doc.data(),
       };
     });
-    setUsuarioAut(usuario)
+    console.log(usuario[0])
+    setUsuarioAut(usuario[0])
   }
   return usuarioAut;
 }

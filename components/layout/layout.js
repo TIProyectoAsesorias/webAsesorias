@@ -99,11 +99,12 @@ const Layout = (props) => {
           body {
            margin: 0;
             text-align: center;
+  
           }
         `}
       />
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta
           name="viewport"

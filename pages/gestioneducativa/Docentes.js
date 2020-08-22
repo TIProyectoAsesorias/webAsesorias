@@ -1,19 +1,20 @@
 import Layout from "../../components/layout/layout";
-import Router, { useRouter } from "next/router";
+import { useRouter } from 'next/router'
+
 import useValidar from "../../hooks/useValidar";
 import styled from "@emotion/styled";
 import firebase, { FirebaseContext } from "../../firebase";
 import React, { useState, useContext } from "react";
-import { css } from "@emotion/core";
+
 import validarMaestro from "../../validar/validarMaestro";
-import Cartita from "../../components/ui/Cards";
+import Link from "next/link";
+
 //import { Formulario, Campo, InputSub, Error } from "../components/ui/Forms";
 
 const STATE_INICIAL = {
   nombre: "",
-  password: "",
   email: "",
-  tutor:false,
+ 
 };
 const Docentes = () => {
   const [error, setError] = useState(false);
@@ -36,13 +37,17 @@ const Docentes = () => {
     jueves: false,
     viernes: false,
   });
+  const [tutor,setTutor]=useState(false)
   const onChin = (e) => {
     setHorario({ ...horario, [e.target.name]: e.target.value });
   };
-  
+
   const handleCheck = (e) => {
     setDias({ ...dias, [e.target.name]: e.target.checked });
   };
+  const handleTutor=(e)=>{
+    setTutor(e.target.checked);
+  }
   const {
     valores,
     errores,
@@ -51,27 +56,29 @@ const Docentes = () => {
     handleChange,
     handleBlur,
   } = useValidar(STATE_INICIAL, validarMaestro, crearMaestro);
-  const { nombre, email, password,tutor } = valores;
-
+  const { nombre, email} = valores;
   const router = useRouter();
   const { usuario } = useContext(FirebaseContext);
+  
   async function crearMaestro() {
     if (!usuario) {
       return router.push("/login");
     }
-  /*   else if(usuario.tipo!=="admin"){
-
-    } */
+    else if (usuario.tipo !== "maestro") {
+      return router.push("/login");
+    }
     const maestro = {
       nombre,
       email,
       horario,
       tipo: "maestro",
+      materias:[],
       tutor,
     };
     try {
-      await firebase.registrar(nombre, email, password);
+      
       await firebase.db.collection("usuarios").add(maestro);
+      /*  await firebase.registrar(nombre, email, password); */ 
     } catch (error) {
       console.error("Error", error.message);
       setError(error.message);
@@ -85,6 +92,7 @@ const Docentes = () => {
 <Espace></Espace>
       <Layout>
         <>
+<<<<<<< HEAD
           <div
             css={css`
               display: flex;
@@ -96,12 +104,21 @@ const Docentes = () => {
           </div>
           <h2>Crear Cuenta</h2>
 
+=======
+          
+          <h1>Crear Docente</h1>
+<Link href="/gestioneducativa">Volver</Link>
+>>>>>>> develop
           <form onSubmit={handleSubmit} noValidate>
-            <label htmlFor="tutor">
-              Tutor
-              </label>
-             <input type="checkbox" id="tutor" name="tutor" checked={tutor} onChange={handleChange} />
-            
+            <label htmlFor="tutor">Tutor</label>
+            <input
+              type="checkbox"
+              id="tutor"
+              name="tutor"
+              checked={tutor}
+              onChange={handleTutor}
+            />
+
             <label htmlFor="nombre">Nombre</label>
             <input
               type="text"
@@ -109,17 +126,6 @@ const Docentes = () => {
               name="nombre"
               placeholder="nombre"
               value={nombre}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-
-            <label htmlFor="password">Contraseña</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Contraseña"
-              value={password}
               onChange={handleChange}
               onBlur={handleBlur}
             />

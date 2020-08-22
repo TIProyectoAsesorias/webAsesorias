@@ -50,6 +50,7 @@ list-style: none;
 const GestionEdu = () => (
   <div>
     <Layout>
+<<<<<<< HEAD
       <Espace></Espace>
       <nav>
         <h1>Gestión educativa</h1>
@@ -68,6 +69,14 @@ const GestionEdu = () => (
           </Linke>
         </Li>
       </nav>
+=======
+    <Espace></Espace>
+    <nav>
+    <h1>Gestión educativa</h1>
+    <Li><Link href="/gestioneducativa/Docentes1"><Linke><lettre>Docentes</lettre></Linke></Link></Li>
+    <Li><Link href="/gestioneducativa/Materias"><Linke><lettre>Materias</lettre></Linke></Link></Li>
+    </nav>
+>>>>>>> develop
     </Layout>
   </div>
 );
