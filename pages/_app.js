@@ -2,6 +2,7 @@ import App from 'next/app';
 import firebase,{FirebaseContext} from '../firebase'
 import useAutenticacion from '../hooks/useAutenticacion';
 import PropTypes from 'prop-types';
+import Login from "../pages/login"
 const MyApp=props=>{
 const usuario=useAutenticacion();
     const {Component,pageProps}=props;
@@ -14,7 +15,7 @@ const usuario=useAutenticacion();
                 usuario
             }
         }>
-<Component {...pageProps}/>
+{usuario?<Component {...pageProps}/>:<Login/>}
         </FirebaseContext.Provider>
     )
 }
