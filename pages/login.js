@@ -156,6 +156,7 @@ const Login = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            {errores.email && <Error msg={errores.email} />}
             <label htmlFor="password"><lettre><IMGe width="40px" src="../static/img/ic_key.svg" /><Labele>Contraseña</Labele></lettre></label>
             <Input
               type="password"
@@ -167,19 +168,11 @@ const Login = () => {
               onBlur={handleBlur}
             />
             {errores.password && <Error msg={errores.password} />}
-            <label htmlFor="correo">Correo</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="correo"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {errores.email && <Error msg={errores.email} />}
-            <input type="submit" value="Login" />
-          </form>
+            
+            
+            
+            <Inpux type="submit" value="Iniciar sesión" />
+          </Form>
         </>
       </Layout>
     </div>
