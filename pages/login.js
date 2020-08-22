@@ -173,10 +173,9 @@ const Login = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-<<<<<<< HEAD
-            <Inpux type="submit" value="Iniciar sesión" />
-          </Form>
-=======
+
+         
+
             {errores.password && <Error msg={errores.password} />}
             
             
