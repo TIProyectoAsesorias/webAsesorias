@@ -30,6 +30,7 @@ const GestionEdu = () => {
     });
     setMaestros(maestros);
   }
+
   const Maestros = () => {
     return maestros.map((maestro) => (
       <Cartita
@@ -37,6 +38,7 @@ const GestionEdu = () => {
         maestro={maestro}
         msgBtt="Borrar"
         fn={() => borrar(maestro.email)}
+     
       />
     ));
   };
@@ -55,8 +57,8 @@ const GestionEdu = () => {
     <div>
       <Layout>
         <nav>
-          <h1>Gestion educativa</h1>
-          <Link href="/gestioneducativa/Docentes">Docentes</Link>
+          <h1>Maestros</h1>
+          <Link href="/gestioneducativa/Docentes">Añadir docente</Link>
         </nav>
         <div
           css={css`

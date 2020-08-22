@@ -7,6 +7,7 @@ import firebase, { FirebaseContext } from "../../firebase";
 import React, { useState, useContext } from "react";
 
 import validarMaestro from "../../validar/validarMaestro";
+import Link from "next/link";
 
 //import { Formulario, Campo, InputSub, Error } from "../components/ui/Forms";
 const STATE_INICIAL = {
@@ -88,8 +89,8 @@ const Docentes = () => {
       <Layout>
         <>
           
-          <h1>Crear Cuenta</h1>
-
+          <h1>Crear Docente</h1>
+<Link href="/gestioneducativa">Volver</Link>
           <form onSubmit={handleSubmit} noValidate>
             <label htmlFor="tutor">Tutor</label>
             <input
@@ -107,17 +108,6 @@ const Docentes = () => {
               name="nombre"
               placeholder="nombre"
               value={nombre}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-
-            <label htmlFor="password">Contraseña</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Contraseña"
-              value={password}
               onChange={handleChange}
               onBlur={handleBlur}
             />

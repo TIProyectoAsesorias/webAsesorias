@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Layout from "../../components/layout/layout";
 import Router from "next/router";
 import Link from "next/link";
-import firebase,{ FirebaseContext } from "../../firebase";
+import  { FirebaseContext } from "../../firebase";
 import styled from "@emotion/styled";
 import validarMateria from "../../validar/validarMateria";
 import useValidar from "../../hooks/useValidar";
@@ -24,27 +24,30 @@ const STATE_INICIAL = {
   tipo: "",
 };
 const RegistrarMateria = () => {
-  const { usuario } = useContext(FirebaseContext);
-/*   console.log(usuario.tipo) */
+  const { usuario,firebase } = useContext(FirebaseContext);
+
   const [maestros, setMaestros] = useState([]);
   const [maestro, setMaestro] = useState("");
   const [validado, setValidado] = useState(false);
+  const [docen, setDocentes] = useState([]);
   useEffect(() => {
     const Fn = () => {
-      
-        firebase.db
-          .collection("usuarios")
-          .where("tipo", "==", "maestro")
-          .onSnapshot(function (snapshot) {
-            const maestros = snapshot.docs.map((doc) => {
-              return {
-                id: doc.id,
-                ...doc.data(),
-              };
-            });
-            setMaestros(maestros);
+      if(usuario.tipo=="admin"||usuario.tipo==="maestro"){
+      firebase.db
+        .collection("usuarios")
+        .where("tipo", "==", "maestro")
+        .onSnapshot(function (snapshot) {
+          const maestros = snapshot.docs.map((doc) => {
+            return {
+              id: doc.id,
+              ...doc.data(),
+            };
           });
-     
+          setMaestros(maestros);
+        });}
+        else{
+          Router.push("/")
+        }
     };
     Fn();
   }, []);
@@ -55,11 +58,12 @@ const RegistrarMateria = () => {
     submitForm,
     handleSubmit,
     handleChange,
-    handleBlur,parche
+    handleBlur,
+    parche,
   } = useValidar(STATE_INICIAL, validarMateria, crearMateria);
   const { nombre, tipo } = valores;
-console.log(parche);
-   function crearMateria() {
+ 
+  function crearMateria() {
     const materia = {
       nombre,
       tipo,
@@ -67,24 +71,40 @@ console.log(parche);
     };
     try {
       firebase.db.collection("materias").add(materia);
-      console.log("C")
+     
     } catch (error) {
       console.error("Error", error.message);
     }
   }
   function addMaestro(e) {
     e.preventDefault();
-    firebase.db
-      .collection("materias")
-      .where("nombre", "==", nombre)
-      .get()
-      .then(function (snapshot) {
+    try {
+      firebase.db
+        .collection("materias")
+        .where("nombre", "==", nombre)
+        .onSnapshot(function (snapshot) {
+          const docentes = snapshot.docs.map((doc) => {
+            return doc.data().docentes;
+          });
+
+          setDocentes(docentes[0]);
+        });
+      let arrayA = docen.push(maestro);
+
+      setDocentes(arrayA);
+    } finally {
+      const materias = firebase.db
+        .collection("materias")
+        .where("nombre", "==", nombre)
+        .get();
+      materias.then(function (snapshot) {
         snapshot.forEach(function (doc) {
           doc.ref.update({
-            docentes: firebase.db.FieldValue.arrayUnion(maestro)
+            docentes: docen,
           });
         });
       });
+    }
 
     setValidado(true);
   }
@@ -108,38 +128,42 @@ console.log(parche);
             </li>
           </ul>
         </nav>
-       { !parche ? (<form onSubmit={handleSubmit} noValidate>
-          <label htmlFor="nombre">Nombre</label>
-          <input
-            type="text"
-            name="nombre"
-            id="nombre"
-            value={nombre}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          {errores.nombre && <Error msg={errores.nombre} />}
-          <label htmlFor="tipo">Tipo de materia</label>
-          <select value={tipo} onChange={handleChange} name="tipo" id="tipo">
-            <option value="formacion tecnologica">Formacion Tecnologica</option>
-            <option value="habilidades GyD">
-              Habilidades gerenciales y directivas
-            </option>
-            <option value="lenguas y metodos">Lenguas y metodos</option>
-            <option value="formacion cientifica">Formacion cientifica</option>
-            <option value="ciencias basicas">Ciencias basicas</option>
-          </select>
-          {errores.tipo && <Error msg={errores.tipo} />}
-          <input type="submit" value="Crear materia" />
-          
-        </form>):(
-        <form onSubmit={addMaestro} noValidate>
-          <select value={maestro} onChange={handleMaestro} >
-            <Maestros />
-          </select>
-          <input type="submit" value="Añadir maestro" />
-        </form> )}
         
+          <form onSubmit={handleSubmit} noValidate>
+            <label htmlFor="nombre">Nombre</label>
+            <input
+              type="text"
+              name="nombre"
+              id="nombre"
+              value={nombre}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {errores.nombre && <Error msg={errores.nombre} />}
+            <label htmlFor="tipo">Tipo de materia</label>
+            <select value={tipo} onChange={handleChange} name="tipo" id="tipo">
+              <option value="formacion tecnologica">
+                Formacion Tecnologica
+              </option>
+              <option value="habilidades GyD">
+                Habilidades gerenciales y directivas
+              </option>
+              <option value="lenguas y metodos">Lenguas y metodos</option>
+              <option value="formacion cientifica">Formacion cientifica</option>
+              <option value="ciencias basicas">Ciencias basicas</option>
+            </select>
+            {errores.tipo && <Error msg={errores.tipo} />}
+            <input type="submit" value="Crear materia" />
+          </form>
+        {parche && <form onSubmit={addMaestro} noValidate>
+            <select value={maestro} onChange={handleMaestro}>
+              <Maestros />
+            </select>
+            <input type="submit" value="Añadir maestro" />
+          </form> }
+          
+       
+
         <Divisor>
           <Collapse in={validado}>
             <Alert
@@ -157,7 +181,7 @@ console.log(parche);
                 </IconButton>
               }
             >
-              Maestro agregado, Dame click para poder agregar otro maestro
+              Maestro agregado, cierra este mensaje para agregar otro
             </Alert>
           </Collapse>
         </Divisor>
