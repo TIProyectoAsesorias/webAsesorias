@@ -158,6 +158,7 @@ const Login = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            {errores.email && <Error msg={errores.email} />}
             <label htmlFor="password">
               <lettre>
                 <IMGe width="40px" src="../static/img/ic_key.svg" />

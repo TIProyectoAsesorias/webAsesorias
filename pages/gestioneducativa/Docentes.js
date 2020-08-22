@@ -92,7 +92,6 @@ const Docentes = () => {
 <Espace></Espace>
       <Layout>
         <>
-<<<<<<< HEAD
           <div
             css={css`
               display: flex;
@@ -104,11 +103,6 @@ const Docentes = () => {
           </div>
           <h2>Crear Cuenta</h2>
 
-=======
-          
-          <h1>Crear Docente</h1>
-<Link href="/gestioneducativa">Volver</Link>
->>>>>>> develop
           <form onSubmit={handleSubmit} noValidate>
             <label htmlFor="tutor">Tutor</label>
             <input

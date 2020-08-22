@@ -27,31 +27,19 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
 });
-<<<<<<< HEAD
-    
-const Cartita=()=> {
-=======
+
 
 const Cartita = ({ key, maestro,msgBtt,fn}) => {
   const [expandir,setExpandir]=useState(false)
->>>>>>> develop
+
   const classes = useStyles();
 
 console.log(maestro.horario);
   return (
     <Card className={classes.root} variant="outlined" key={key}>
       <CardContent>
-<<<<<<< HEAD
         <Typography className={classes.title} color="textSecondary" gutterBottom>
          Tecnologías de la información
-=======
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Tecnologias de la informacion
->>>>>>> develop
         </Typography>
         <Typography variant="h5" component="h2">
           {maestro.nombre}
@@ -59,12 +47,7 @@ console.log(maestro.horario);
         <Typography className={classes.pos} color="textSecondary">
           {}
         </Typography>
-        <Typography variant="body2" component="p">
-<<<<<<< HEAD
-        aestahorasalenduendes
-=======
->>>>>>> develop
-        </Typography>
+  
       </CardContent>
       <CardActions>
       <Button size="small" onClick={()=>setExpandir(!expandir)}> {expandir? "Ver Menos" : "Ver Mas" }</Button>
@@ -85,3 +68,4 @@ console.log(maestro.horario);
   );
 };
 export default Cartita;
+
