@@ -178,20 +178,11 @@ const Login = () => {
           </Form>
 =======
             {errores.password && <Error msg={errores.password} />}
-            <label htmlFor="correo">Correo</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="correo"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {errores.email && <Error msg={errores.email} />}
-            <input type="submit" value="Login" />
-          </form>
->>>>>>> develop
+            
+            
+            
+            <Inpux type="submit" value="Iniciar sesión" />
+          </Form>
         </>
       </Layout>
     </div>
