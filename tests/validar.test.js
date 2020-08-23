@@ -1,13 +1,32 @@
 import validarMaestro from "../validar/validarMaestro";
 import validarCrearCuenta from "../validar/validarCrearCuenta";
 import validarLogIn from "../validar/validarLogin";
-
+import validarMateria from "../validar/validarMateria";
+describe("Validacion Materia", () => {
+  const datos = {
+    nombre: "Materia",
+    tipo: "Materia",
+  };
+  const errores = {
+    nombre: "nombre es obligatorio",
+    tipo: "tipo de materia es obligatorio",
+  };
+  it("todos los datos son correctos", () => {
+    expect(validarMateria(datos)).toStrictEqual({});
+  });
+  it("no recibe nada", () => {
+    expect(validarMateria({})).toStrictEqual(errores);
+  });
+  it("Un dato incorrecto", () => {
+    expect(validarMateria({ ...datos, tipo: null })).toStrictEqual({
+      tipo: "tipo de materia es obligatorio",
+    });
+  });
+});
 describe("Validacion Maestro", () => {
   const datos = {
     email: "correo@correo.com",
-
     nombre: "nombre",
-    matricula: "1111111111",
   };
   const errores = {
     email: "El email es obligatorio",
@@ -20,11 +39,8 @@ describe("Validacion Maestro", () => {
     expect(validarMaestro({})).toStrictEqual(errores);
   });
   it("Email incorrecta", () => {
-    expect(
-      validarMaestro({ ...datos, email: "correo" })
-    ).toStrictEqual({
+    expect(validarMaestro({ ...datos, email: "correo" })).toStrictEqual({
       email: "Email invalido",
-     
     });
   });
 });
@@ -62,7 +78,7 @@ describe("Validacion crear alumno", () => {
     email: "El email es obligatorio",
     nombre: "El nombre es obligatorio",
     password: "La contraseña es obligatoria",
-    matricula: "La matricula es obligatoria"
+    matricula: "La matricula es obligatoria",
   };
   it("todos los datos son correctos", () => {
     expect(validarCrearCuenta(datos)).toStrictEqual({});
@@ -72,11 +88,16 @@ describe("Validacion crear alumno", () => {
   });
   it("Email, contraseña, matricula  incorrecta", () => {
     expect(
-      validarCrearCuenta({ ...datos, email: "correo", password: "1234", matricula:"12345" })
+      validarCrearCuenta({
+        ...datos,
+        email: "correo",
+        password: "1234",
+        matricula: "12345",
+      })
     ).toStrictEqual({
       email: "Email invalido",
       password: "el password debe ser de al menos 6 caracteres",
-      matricula:"La matricula son 10 caracteres"
+      matricula: "La matricula son 10 caracteres",
     });
   });
 });

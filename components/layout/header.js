@@ -71,7 +71,7 @@ cursor: pointer;
   color: #006933;}
 `;
 
-const Butountrois= styled.headerlettre`
+const Butountrois= styled.Headerlettre`
 background: Transparent;
 border: transparent;
 margin-top: -65px;
@@ -97,7 +97,7 @@ li {
   }
 `;
 
-const Begineres = styled.headerlettre`
+const Begineres = styled.Headerlettre`
 position: block;
 float: right;
 margin-top: -40px;
@@ -111,7 +111,7 @@ text-align:center;
   &:active {
     color: #006933;}
 `; 
-const Beginer = styled.headerlettre`
+const Beginer = styled.Headerlettre`
 float: right;
 margin-top: -40px;
 margin-left: 0px;
@@ -157,9 +157,9 @@ const Header = () => {
         <IMGE src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
         
         <Butountrois  width="57px">
-        <headerlettre data-testid="user">Hola {usuario.nombre}
+        <Headerlettre data-testid="user">Hola {usuario.nombre}
         <ING width="57px" src="../static/img/usuario.svg" />
-        </headerlettre> 
+        </Headerlettre> 
         </Butountrois>
         
         <Navegacion />{" "}
@@ -180,12 +180,12 @@ const Header = () => {
               <>
               <Begineres>
                 <Link text-align="center" href="/login">
-                  <headerlettre>Iniciar sesión</headerlettre>
+                  <Headerlettre>Iniciar sesión</Headerlettre>
                 </Link>
                 </Begineres>
                 <Beginer>
                 <Link href="/crear-cuenta">
-                  <headerlettre>Crear cuenta</headerlettre>
+                  <Headerlettre>Crear cuenta</Headerlettre>
                 </Link>
                 </Beginer>
               </>
