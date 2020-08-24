@@ -1,12 +1,8 @@
-import MyApp from '../pages/_app';
 import Header from '../components/layout/header'
-import Router from 'next/router'
-import { render, screen, getByTestId } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import firebase,{FirebaseContext} from '../firebase'
 jest.mock('../firebase');
 const renderProvider=(usuario)=>{
-    
-    
     return render (<FirebaseContext.Provider value={
         usuario,firebase
     }><Header/></FirebaseContext.Provider>)

@@ -34,7 +34,6 @@ const Cartita = ({ key, maestro,msgBtt,fn}) => {
 
   const classes = useStyles();
 
-console.log(maestro.horario);
   return (
     <Card className={classes.root} variant="outlined" key={key}>
       <CardContent>
