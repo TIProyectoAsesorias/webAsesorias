@@ -1,6 +1,6 @@
 import Layout from "../../components/layout/layout";
 import { useRouter } from 'next/router'
-
+import { css } from "@emotion/core";
 import useValidar from "../../hooks/useValidar";
 import styled from "@emotion/styled";
 import firebase, { FirebaseContext } from "../../firebase";
@@ -98,8 +98,7 @@ const Docentes = () => {
             `}
           >
       
-            <Cartita />
-            <Cartita />
+            
           </div>
           <h2>Crear Cuenta</h2>
 

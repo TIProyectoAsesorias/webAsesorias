@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import Layout from "../../components/layout/layout";
 import Link from "next/link";
 import styled from "@emotion/styled";
@@ -10,6 +11,7 @@ const link = styled.nav`
 `;
 
 const GestionEdu = () => {
+
   const { firebase } = useContext(FirebaseContext);
   const [maestros, setMaestros] = useState([]);
   useEffect(() => {

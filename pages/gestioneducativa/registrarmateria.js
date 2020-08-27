@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Layout from "../../components/layout/layout";
 import Router from "next/router";
 import Link from "next/link";
-import  { FirebaseContext } from "../../firebase";
+import firebase,{ FirebaseContext } from "../../firebase";
 import styled from "@emotion/styled";
 import validarMateria from "../../validar/validarMateria";
 import useValidar from "../../hooks/useValidar";
@@ -12,7 +12,7 @@ import Alert from "@material-ui/lab/Alert";
 import IconButton from "@material-ui/core/IconButton";
 import Collapse from "@material-ui/core/Collapse";
 import CloseIcon from "@material-ui/icons/Close";
-
+import * as firefire from 'firebase';
 const Divisor = styled.div`
 width=100%;
 & > * + *{
@@ -24,30 +24,30 @@ const STATE_INICIAL = {
   tipo: "",
 };
 const RegistrarMateria = () => {
-  const { usuario,firebase } = useContext(FirebaseContext);
-
+  const { usuario} = useContext(FirebaseContext);
+  const [mates, setMaterias] = useState([]);
   const [maestros, setMaestros] = useState([]);
   const [maestro, setMaestro] = useState("");
   const [validado, setValidado] = useState(false);
   const [docen, setDocentes] = useState([]);
   useEffect(() => {
     const Fn = () => {
-      if(usuario.tipo=="admin"||usuario.tipo==="maestro"){
-      firebase.db
-        .collection("usuarios")
-        .where("tipo", "==", "maestro")
-        .onSnapshot(function (snapshot) {
-          const maestros = snapshot.docs.map((doc) => {
-            return {
-              id: doc.id,
-              ...doc.data(),
-            };
+      if (usuario.tipo == "admin" || usuario.tipo === "maestro") {
+        firebase.db
+          .collection("usuarios")
+          .where("tipo", "==", "maestro")
+          .onSnapshot(function (snapshot) {
+            const maestros = snapshot.docs.map((doc) => {
+              return {
+                id: doc.id,
+                ...doc.data(),
+              };
+            });
+            setMaestros(maestros);
           });
-          setMaestros(maestros);
-        });}
-        else{
-          Router.push("/")
-        }
+      } else {
+        Router.push("/");
+      }
     };
     Fn();
   }, []);
@@ -62,7 +62,7 @@ const RegistrarMateria = () => {
     parche,
   } = useValidar(STATE_INICIAL, validarMateria, crearMateria);
   const { nombre, tipo } = valores;
- 
+
   function crearMateria() {
     const materia = {
       nombre,
@@ -71,28 +71,25 @@ const RegistrarMateria = () => {
     };
     try {
       firebase.db.collection("materias").add(materia);
-     
     } catch (error) {
       console.error("Error", error.message);
     }
   }
   function addMaestro(e) {
     e.preventDefault();
-    try {
-      firebase.db
-        .collection("materias")
-        .where("nombre", "==", nombre)
-        .onSnapshot(function (snapshot) {
-          const docentes = snapshot.docs.map((doc) => {
-            return doc.data().docentes;
+ 
+      const docentes = firebase.db
+        .collection("usuarios")
+        .where("nombre", "==", maestro)
+        .where("tipo", "==", "maestro")
+        .get();
+      docentes.then(function (snapshot) {
+        snapshot.forEach(function (doc) {
+          doc.ref.update({
+            materias: firefire.firestore.FieldValue.arrayUnion(nombre)
           });
-
-          setDocentes(docentes[0]);
         });
-      let arrayA = docen.push(maestro);
-
-      setDocentes(arrayA);
-    } finally {
+      });
       const materias = firebase.db
         .collection("materias")
         .where("nombre", "==", nombre)
@@ -100,11 +97,11 @@ const RegistrarMateria = () => {
       materias.then(function (snapshot) {
         snapshot.forEach(function (doc) {
           doc.ref.update({
-            docentes: docen,
+            docentes: firefire.firestore.FieldValue.arrayUnion(maestro),
           });
         });
       });
-    }
+    
 
     setValidado(true);
   }
@@ -128,41 +125,39 @@ const RegistrarMateria = () => {
             </li>
           </ul>
         </nav>
-        
-          <form onSubmit={handleSubmit} noValidate>
-            <label htmlFor="nombre">Nombre</label>
-            <input
-              type="text"
-              name="nombre"
-              id="nombre"
-              value={nombre}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {errores.nombre && <Error msg={errores.nombre} />}
-            <label htmlFor="tipo">Tipo de materia</label>
-            <select value={tipo} onChange={handleChange} name="tipo" id="tipo">
-              <option value="formacion tecnologica">
-                Formacion Tecnologica
-              </option>
-              <option value="habilidades GyD">
-                Habilidades gerenciales y directivas
-              </option>
-              <option value="lenguas y metodos">Lenguas y metodos</option>
-              <option value="formacion cientifica">Formacion cientifica</option>
-              <option value="ciencias basicas">Ciencias basicas</option>
-            </select>
-            {errores.tipo && <Error msg={errores.tipo} />}
-            <input type="submit" value="Crear materia" />
-          </form>
-        {parche && <form onSubmit={addMaestro} noValidate>
+
+        <form onSubmit={handleSubmit} noValidate>
+          <label htmlFor="nombre">Nombre</label>
+          <input
+            type="text"
+            name="nombre"
+            id="nombre"
+            value={nombre}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          {errores.nombre && <Error msg={errores.nombre} />}
+          <label htmlFor="tipo">Tipo de materia</label>
+          <select value={tipo} onChange={handleChange} name="tipo" id="tipo">
+            <option value="formacion tecnologica">Formacion Tecnologica</option>
+            <option value="habilidades GyD">
+              Habilidades gerenciales y directivas
+            </option>
+            <option value="lenguas y metodos">Lenguas y metodos</option>
+            <option value="formacion cientifica">Formacion cientifica</option>
+            <option value="ciencias basicas">Ciencias basicas</option>
+          </select>
+          {errores.tipo && <Error msg={errores.tipo} />}
+          <input type="submit" value="Crear materia" />
+        </form>
+        {parche && (
+          <form onSubmit={addMaestro} noValidate>
             <select value={maestro} onChange={handleMaestro}>
               <Maestros />
             </select>
             <input type="submit" value="Añadir maestro" />
-          </form> }
-          
-       
+          </form>
+        )}
 
         <Divisor>
           <Collapse in={validado}>

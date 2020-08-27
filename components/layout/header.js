@@ -56,7 +56,7 @@ const Butoun = styled.button`
 `;
 
 const Butoundouex = styled.button`
-background: Transparent;
+background: transparent;
 float: right;
 position: relative;
 left: 770px;
@@ -71,8 +71,8 @@ cursor: pointer;
   color: #006933;}
 `;
 
-const Butountrois= styled.Headerlettre`
-background: Transparent;
+const Butountrois= styled.headerlettre`
+background: transparent;
 border: transparent;
 margin-top: -65px;
 margin-left: 1010px;
@@ -97,7 +97,7 @@ li {
   }
 `;
 
-const Begineres = styled.Headerlettre`
+const Begineres = styled.headerlettre`
 position: block;
 float: right;
 margin-top: -40px;
@@ -111,7 +111,7 @@ text-align:center;
   &:active {
     color: #006933;}
 `; 
-const Beginer = styled.Headerlettre`
+const Beginer = styled.headerlettre`
 float: right;
 margin-top: -40px;
 margin-left: 0px;
@@ -126,7 +126,7 @@ text-align:center;
 
 //usuario imagen y saludo al
 const ING = styled.img`
-background: Transparent;
+background: transparent;
 border: transparent;
 float: left;
 margin-right: 10px;
@@ -157,9 +157,9 @@ const Header = () => {
         <IMGE src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
         
         <Butountrois  width="57px">
-        <Headerlettre data-testid="user">Hola {usuario.nombre}
+        <headerlettre >Hola {usuario.nombre}
         <ING width="57px" src="../static/img/usuario.svg" />
-        </Headerlettre> 
+        </headerlettre> 
         </Butountrois>
         
         <Navegacion />{" "}
@@ -180,12 +180,12 @@ const Header = () => {
               <>
               <Begineres>
                 <Link text-align="center" href="/login">
-                  <Headerlettre>Iniciar sesión</Headerlettre>
+                  <headerlettre>Iniciar sesión</headerlettre>
                 </Link>
                 </Begineres>
                 <Beginer>
                 <Link href="/crear-cuenta">
-                  <Headerlettre>Crear cuenta</Headerlettre>
+                  <headerlettre>Crear cuenta</headerlettre>
                 </Link>
                 </Beginer>
               </>

@@ -38,7 +38,7 @@ const Layout = (props) => {
           /* Character Styles */
 
 
-          eaderlettre {
+          headerlettre {
             font-family: var(--unnamed-font-family-roboto);
             font-style: var(--unnamed-font-style-regular);
             font-size: var(--unnamed-font-size-30);

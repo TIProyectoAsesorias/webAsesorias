@@ -9,7 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Collapse from '@material-ui/core/Collapse';
-
+import { useRouter } from 'next/router'
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -31,9 +31,9 @@ const useStyles = makeStyles({
 
 const Cartita = ({ key, maestro,msgBtt,fn}) => {
   const [expandir,setExpandir]=useState(false)
-
+  const rutas=useRouter();
   const classes = useStyles();
-
+const {nombre,tutor,horario,materias}=maestro;
   return (
     <Card className={classes.root} variant="outlined" key={key}>
       <CardContent>
@@ -41,7 +41,7 @@ const Cartita = ({ key, maestro,msgBtt,fn}) => {
          Tecnologías de la información
         </Typography>
         <Typography variant="h5" component="h2">
-          {maestro.nombre}
+          {nombre}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           {}
@@ -49,20 +49,14 @@ const Cartita = ({ key, maestro,msgBtt,fn}) => {
   
       </CardContent>
       <CardActions>
-      <Button size="small" onClick={()=>setExpandir(!expandir)}> {expandir? "Ver Menos" : "Ver Mas" }</Button>
+      <Button size="small" onClick={()=>rutas.push({pathname:'/gestioneducativa/editarMaestro', query:{nombre,tutor,materias,...horario}})}>Editar</Button>
      
   <Button size="small"  css={css`
-            background-color:#b50202;
+            background-color:red;
             color:white;
           `} onClick={fn}>{msgBtt}</Button>
       </CardActions>
-      <Collapse in={expandir} timeout="auto" unmountOnExit>
-        <CardContent>
-        <Typography variant="body2" component="p">
-          Proximamente
-        </Typography>
-        </CardContent>
-      </Collapse>
+     
     </Card>
   );
 };
