@@ -16,10 +16,18 @@ const useValidar = (stateInicial, validar, fn) => {
   }, [errores]);
   //se ejecuta mientras el usuario escribe
   const handleChange = (e) => {
+    if(e.target.name==="tutor"){
     setValores({
-      ...valores,
-      [e.target.name]: e.target.value
-    });
+        ...valores,
+        [e.target.name]: e.target.checked
+      });
+    }else {
+        setValores({
+        ...valores,
+        [e.target.name]: e.target.value
+      });
+    }
+    
   };
 
   //funcion que se ejecuta cuNDO EL USUARIO HACE SUBMIT

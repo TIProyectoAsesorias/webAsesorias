@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 
 
 const Cartita = ({ key, maestro,msgBtt,fn}) => {
-  const [expandir,setExpandir]=useState(false)
+ 
   const rutas=useRouter();
   const classes = useStyles();
 const {nombre,tutor,horario,materias}=maestro;

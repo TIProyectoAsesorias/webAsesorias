@@ -54,8 +54,8 @@ const Solicitudes =() => (
       <nav>
     <h1>Solicitudes</h1>
     <ul>
-    <Li><Link href="/solicitudes/pendientes"><Linke><lettre>Pendientes</lettre></Linke></Link></Li>
-    <Li><Link href="/solicitudes/confimadas"><Linke><lettre>Confirmadas</lettre></Linke></Link></Li>
+    <Li><Link href="/solicitudes/pendientes"><Linke><Lettre>Pendientes</Lettre></Linke></Link></Li>
+    <Li><Link href="/solicitudes/confimadas"><Linke><Lettre>Confirmadas</Lettre></Linke></Link></Li>
     </ul>
     </nav>
     </Layout>

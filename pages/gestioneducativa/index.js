@@ -55,8 +55,8 @@ const GestionEdu = () => (
     <Espace></Espace>
     <nav>
     <h1>Gestión educativa</h1>
-    <Li><Link href="/gestioneducativa/Docentes1"><Linke><lettre>Docentes</lettre></Linke></Link></Li>
-    <Li><Link href="/gestioneducativa/Materias"><Linke><lettre>Materias</lettre></Linke></Link></Li>
+    <Li><Link href="/gestioneducativa/Docentes1"><Linke><Lettre>Docentes</Lettre></Linke></Link></Li>
+    <Li><Link href="/gestioneducativa/Materias"><Linke><Lettre>Materias</Lettre></Linke></Link></Li>
     </nav>
 
     </Layout>

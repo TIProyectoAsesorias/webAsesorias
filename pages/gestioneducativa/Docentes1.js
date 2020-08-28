@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import * as firefire from "firebase";
 import Layout from "../../components/layout/layout";
 import Link from "next/link";
 import styled from "@emotion/styled";
@@ -39,21 +39,28 @@ const GestionEdu = () => {
         key={maestro.id}
         maestro={maestro}
         msgBtt="Borrar"
-        fn={() => borrar(maestro.email)}
+        fn={() => borrar(maestro)}
      
       />
     ));
   };
-  function borrar(email) {
+  function borrar(maestro) {
     firebase.db
       .collection("usuarios")
-      .where("email", "==", email)
+      .where("email", "==", maestro.email)
       .get()
       .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
           doc.ref.delete();
         });
       });
+      firebase.db.collection("materias").where("docentes","array-contains",maestro.nombre).get().then(function(snap){
+        snap.forEach(function(doc){
+          doc.ref.update(
+            {docentes:firefire.firestore.FieldValue.arrayRemove(maestro.nombre)}
+          );
+        })
+      })
   }
   return (
     <div>

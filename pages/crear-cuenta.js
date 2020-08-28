@@ -124,7 +124,7 @@ const CrearCuenta = () => {
             <Label for="">Crear Cuenta </Label>
             <Ul>
               <label htmlFor="Nombre">
-                <lettre>Nombre</lettre>
+                <Lettre>Nombre</Lettre>
               </label>
 
               <Input
@@ -138,7 +138,7 @@ const CrearCuenta = () => {
               />
 
               <label htmlFor="matricula">
-                <lettre>Matrícula</lettre>
+                <Lettre>Matrícula</Lettre>
               </label>
               <Input
                 type="number"
@@ -151,7 +151,7 @@ const CrearCuenta = () => {
               />
 
               <label htmlFor="password">
-                <lettre>Contraseña</lettre>
+                <Lettre>Contraseña</Lettre>
               </label>
               <Input
                 type="password"
@@ -163,7 +163,7 @@ const CrearCuenta = () => {
                 onBlur={handleBlur}
               />
               <label htmlFor="correo">
-                <lettre>Correo Electrónico</lettre>
+                <Lettre>Correo Electrónico</Lettre>
               </label>
               <Input
                 type="email"
