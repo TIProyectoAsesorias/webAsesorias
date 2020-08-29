@@ -6,12 +6,12 @@ import styled from "@emotion/styled";
 import Cartita from "../../components/ui/Cards";
 import { css } from "@emotion/core";
 import { FirebaseContext } from "../../firebase";
+import {Linke,Li} from "../../components/ui/Botton"
 const link = styled.nav`
   position: flex;
 `;
 
 const GestionEdu = () => {
-
   const { firebase } = useContext(FirebaseContext);
   const [maestros, setMaestros] = useState([]);
   useEffect(() => {
@@ -40,7 +40,6 @@ const GestionEdu = () => {
         maestro={maestro}
         msgBtt="Borrar"
         fn={() => borrar(maestro)}
-     
       />
     ));
   };
@@ -54,24 +53,30 @@ const GestionEdu = () => {
           doc.ref.delete();
         });
       });
-      firebase.db.collection("materias").where("docentes","array-contains",maestro.nombre).get().then(function(snap){
-        snap.forEach(function(doc){
-          doc.ref.update(
-            {docentes:firefire.firestore.FieldValue.arrayRemove(maestro.nombre)}
-          );
-        })
-      })
+    firebase.db
+      .collection("materias")
+      .where("docentes", "array-contains", maestro.nombre)
+      .get()
+      .then(function (snap) {
+        snap.forEach(function (doc) {
+          doc.ref.update({
+            docentes: firefire.firestore.FieldValue.arrayRemove(maestro.nombre),
+          });
+        });
+      });
   }
   return (
     <div>
       <Layout>
         <nav>
           <h1>Maestros</h1>
-          <Link href="/gestioneducativa/Docentes">Añadir docente</Link>
+          <Li> <Link href="/gestioneducativa/Docentes"><Linke><lettre>Añadir docente</lettre></Linke></Link></Li>
+          
         </nav>
         <div
           css={css`
             display: flex;
+            flex-wrap: wrap;
           `}
         >
           <Maestros />

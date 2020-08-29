@@ -1,9 +1,9 @@
 import React from 'react';
-const Materia = ({materia,key,fn}) => {
+const Maestro = ({maestro,key,fn}) => {
     return (  <div key={key}>
-        <lettre>{materia}</lettre>
+        <lettre>{maestro}</lettre>
         <button onClick={fn}>Borrar</button>
         </div> );
 }
  
-export default Materia;
+export default Maestro;

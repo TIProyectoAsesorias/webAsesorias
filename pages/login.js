@@ -144,10 +144,10 @@ const Login = () => {
         <>
           <Form onSubmit={handleSubmit} noValidate>
             <label htmlFor="correo">
-              <Lettre>
+              <lettre>
                 <IMG width="40px" src="../static/img/ic_usuario.svg" />
                 <Label>Correo Electrónico</Label>
-              </Lettre>
+              </lettre>
             </label>
             <Input
               type="email"
@@ -160,10 +160,10 @@ const Login = () => {
             />
             {errores.email && <Error msg={errores.email} />}
             <label htmlFor="password">
-              <Lettre>
+              <lettre>
                 <IMGe width="40px" src="../static/img/ic_key.svg" />
                 <Labele>Contraseña</Labele>
-              </Lettre>
+              </lettre>
             </label>
             <Input
               type="password"

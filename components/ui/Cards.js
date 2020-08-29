@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import styled from "@emotion/styled";
-import firebase from '../../firebase'
+import React from "react";
 import { css } from "@emotion/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -8,7 +6,6 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Collapse from '@material-ui/core/Collapse';
 import { useRouter } from 'next/router'
 const useStyles = makeStyles({
   root: {
@@ -61,4 +58,5 @@ const {nombre,tutor,horario,materias}=maestro;
   );
 };
 export default Cartita;
+
 

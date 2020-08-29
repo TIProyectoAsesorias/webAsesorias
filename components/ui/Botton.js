@@ -1,9 +1,6 @@
-import React from 'react'
-import Layout from '../../components/layout/layout'
-import Link from "next/link"
 import styled from "@emotion/styled"
 
-const Linke = styled.button`
+export const Linke = styled.button`
 position: flex;
 width: 381px;
 align-items: center;
@@ -39,27 +36,10 @@ border: 1px solid #707070B0 ;
   }
 `;
 
-const Espace = styled.div`
+export const Espace = styled.div`
 padding-top: 3rem;
 `;
 
-const Li = styled.li`
+export const Li = styled.li`
 list-style: none;
 `;
-
-const GestionEdu = () => (
-  <div>
-    <Layout>
-
-      
-    <Espace></Espace>
-    <nav>
-    <h1>Gestión educativa</h1>
-    <Li><Link href="/gestioneducativa/Docentes1"><Linke><lettre>Docentes</lettre></Linke></Link></Li>
-    <Li><Link href="/gestioneducativa/Materias"><Linke><lettre>Materias</lettre></Linke></Link></Li>
-    </nav>
-
-    </Layout>
-  </div>
-);
-export default GestionEdu;

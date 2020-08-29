@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "@emotion/styled";
-;
+import { css } from "@emotion/core";
 import Link from "next/link";
 import Navegacion from "./navegacion";
 import { FirebaseContext } from "../../firebase";
@@ -71,7 +71,7 @@ cursor: pointer;
   color: #006933;}
 `;
 
-const Butountrois= styled.Headerlettre`
+const Butountrois= styled.headerlettre`
 background: transparent;
 border: transparent;
 margin-top: -65px;
@@ -97,7 +97,7 @@ li {
   }
 `;
 
-const Begineres = styled.Headerlettre`
+const Begineres = styled.headerlettre`
 position: block;
 float: right;
 margin-top: -40px;
@@ -111,7 +111,7 @@ text-align:center;
   &:active {
     color: #006933;}
 `; 
-const Beginer = styled.Headerlettre`
+const Beginer = styled.headerlettre`
 float: right;
 margin-top: -40px;
 margin-left: 0px;
@@ -138,14 +138,15 @@ vertical-align: middle;
 display: inline-block;
 list-style-type: none;
 `;
-const Divisor=styled.div`display: flex;
-flex-wrap: wrap;`
 const Header = () => {
   const { usuario, firebase } = useContext(FirebaseContext);
   return (
     <Tete>
-      <Divisor
-  
+      <div
+        css={css`
+          display: flex;
+          flex-wrap: wrap;
+        `}
         role="existir"
       
       >
@@ -156,9 +157,9 @@ const Header = () => {
         <IMGE src="../static/img/AS.svg" Alt="AQUI VA UNA IMAGEN" />
         
         <Butountrois  width="57px">
-        <Headerlettre >Hola {usuario.nombre}
+        <headerlettre >Hola {usuario.nombre}
         <ING width="57px" src="../static/img/usuario.svg" />
-        </Headerlettre> 
+        </headerlettre> 
         </Butountrois>
         
         <Navegacion />{" "}
@@ -179,12 +180,12 @@ const Header = () => {
               <>
               <Begineres>
                 <Link text-align="center" href="/login">
-                  <Headerlettre>Iniciar sesión</Headerlettre>
+                  <headerlettre>Iniciar sesión</headerlettre>
                 </Link>
                 </Begineres>
                 <Beginer>
                 <Link href="/crear-cuenta">
-                  <Headerlettre>Crear cuenta</Headerlettre>
+                  <headerlettre>Crear cuenta</headerlettre>
                 </Link>
                 </Beginer>
               </>
@@ -192,8 +193,7 @@ const Header = () => {
             </div>
           </>
         )}
-           </Divisor>
-
+      </div>
     </Tete>
   );
 };
