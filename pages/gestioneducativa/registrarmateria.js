@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Layout from "../../components/layout/layout";
 import Router from "next/router";
 import Link from "next/link";
-import firebase,{ FirebaseContext } from "../../firebase";
+import firebase, { FirebaseContext } from "../../firebase";
 import styled from "@emotion/styled";
 import validarMateria from "../../validar/validarMateria";
 import useValidar from "../../hooks/useValidar";
@@ -12,7 +12,7 @@ import Alert from "@material-ui/lab/Alert";
 import IconButton from "@material-ui/core/IconButton";
 import Collapse from "@material-ui/core/Collapse";
 import CloseIcon from "@material-ui/icons/Close";
-import * as firefire from 'firebase';
+import * as firefire from "firebase";
 const Divisor = styled.div`
 width=100%;
 & > * + *{
@@ -20,9 +20,9 @@ width=100%;
 }
 `;
 const Li = styled.li`
-list-style: none;
-text-align: center;
-margin-left: -25px;
+  list-style: none;
+  text-align: center;
+  margin-left: -25px;
 `;
 const Linke = styled.button`
 width: 400px;
@@ -55,17 +55,18 @@ border: 1px solid #707070B0 ;
     }
 `;
 const IMG = styled.img`
-margin-left: -1200px;
-margin-right: 10px;
-position:left;
-max-widht: 90%;
-margin-top: -80px;
-margin-bottom: -130px;
-&:hover {
-  cursor: pointer;
+  margin-left: -1200px;
+  margin-right: 10px;
+  position: left;
+  max-widht: 90%;
+  margin-top: -80px;
+  margin-bottom: -130px;
+  &:hover {
+    cursor: pointer;
   }
   &:active {
-    color: #006933;}
+    color: #006933;
+  }
 `;
 const Input = styled.input`
   width: 300px;
@@ -104,21 +105,21 @@ const Inpux = styled.input`
   margin-top: -10px;
   margin-bottom: 10px;
   box-shadow: 0px 5px 7px -4px #000000;
-  webkit-box-shadow: 0px 5px 7px -4px #000000; 
+  webkit-box-shadow: 0px 5px 7px -4px #000000;
   background: #006933;
-  
-    font-family: var(--unnamed-font-family-roboto);
-    font-style: var(--unnamed-font-style-regular);
-    font-size: var(--unnamed-font-size-30);
-    line-height: var(--unnamed-line-spacing-37);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: #ffffff;
+
+  font-family: var(--unnamed-font-family-roboto);
+  font-style: var(--unnamed-font-style-regular);
+  font-size: var(--unnamed-font-size-30);
+  line-height: var(--unnamed-line-spacing-37);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: #ffffff;
 
   &:hover {
     cursor: pointer;
   }
   &:hover {
-    background: linear-gradient(180deg, #01602A 0%, #01602A 100%);
+    background: linear-gradient(180deg, #01602a 0%, #01602a 100%);
   }
   &:active {
     color: #006933;
@@ -135,21 +136,21 @@ const Inpuxes = styled.input`
   margin-top: -10px;
   margin-bottom: 10px;
   box-shadow: 0px 5px 7px -4px #000000;
-  webkit-box-shadow: 0px 5px 7px -4px #000000; 
+  webkit-box-shadow: 0px 5px 7px -4px #000000;
   background: #006933;
-  
-    font-family: var(--unnamed-font-family-roboto);
-    font-style: var(--unnamed-font-style-regular);
-    font-size: var(--unnamed-font-size-30);
-    line-height: var(--unnamed-line-spacing-37);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: #ffffff;
+
+  font-family: var(--unnamed-font-family-roboto);
+  font-style: var(--unnamed-font-style-regular);
+  font-size: var(--unnamed-font-size-30);
+  line-height: var(--unnamed-line-spacing-37);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: #ffffff;
 
   &:hover {
     cursor: pointer;
   }
   &:hover {
-    background: linear-gradient(180deg, #01602A 0%, #01602A 100%);
+    background: linear-gradient(180deg, #01602a 0%, #01602a 100%);
   }
   &:active {
     color: #006933;
@@ -160,7 +161,7 @@ const STATE_INICIAL = {
   tipo: "",
 };
 const RegistrarMateria = () => {
-  const { usuario} = useContext(FirebaseContext);
+  const { usuario } = useContext(FirebaseContext);
   const [mates, setMaterias] = useState([]);
   const [maestros, setMaestros] = useState([]);
   const [maestro, setMaestro] = useState("");
@@ -213,29 +214,29 @@ const RegistrarMateria = () => {
   }
   function addMaestro(e) {
     e.preventDefault();
-      const docentes = firebase.db
-        .collection("usuarios")
-        .where("nombre", "==", maestro)
-        .where("tipo", "==", "maestro")
-        .get();
-      docentes.then(function (snapshot) {
-        snapshot.forEach(function (doc) {
-          doc.ref.update({
-            materias: firefire.firestore.FieldValue.arrayUnion(nombre)
-          });
+    const docentes = firebase.db
+      .collection("usuarios")
+      .where("nombre", "==", maestro)
+      .where("tipo", "==", "maestro")
+      .get();
+    docentes.then(function (snapshot) {
+      snapshot.forEach(function (doc) {
+        doc.ref.update({
+          materias: firefire.firestore.FieldValue.arrayUnion(nombre),
         });
       });
-      const materias = firebase.db
-        .collection("materias")
-        .where("nombre", "==", nombre)
-        .get();
-      materias.then(function (snapshot) {
-        snapshot.forEach(function (doc) {
-          doc.ref.update({
-            docentes: firefire.firestore.FieldValue.arrayUnion(maestro),
-          });
+    });
+    const materias = firebase.db
+      .collection("materias")
+      .where("nombre", "==", nombre)
+      .get();
+    materias.then(function (snapshot) {
+      snapshot.forEach(function (doc) {
+        doc.ref.update({
+          docentes: firefire.firestore.FieldValue.arrayUnion(maestro),
         });
       });
+    });
     setValidado(true);
   }
   const Maestros = () => {
@@ -250,43 +251,68 @@ const RegistrarMateria = () => {
     <div>
       <Layout>
         <nav>
-        <Link href="/gestioneducativa"><IMG width="40px" src="../static/img/ic_flecha.svg"/></Link>
+          <Link href="/gestioneducativa">
+            <IMG width="40px" src="../static/img/ic_flecha.svg" />
+          </Link>
           <h1>Registrar Materia</h1>
         </nav>
         <ul>
-        <form onSubmit={handleSubmit} noValidate>
-          <Li><lettre><label htmlFor="nombre">Nombre</label></lettre></Li>
-          <Li><Input
-            type="text"
-            name="nombre"
-            id="nombre"
-            value={nombre}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-         </Li>
-          {errores.nombre && <Error msg={errores.nombre} />}
-          <Li><lettre><label htmlFor="tipo">Tipo de materia</label></lettre></Li>
-          <Li><Select value={tipo} onChange={handleChange} name="tipo" id="tipo">
-          <option value="formacion tecnologica">Formación Tecnológica</option>
-            <option value="habilidades GyD">
-              Habilidades gerenciales y directivas
-            </option>
-            <option value="lenguas y metodos">Lenguas y métodos</option>
-            <option value="formacion cientifica">Formacion científica</option>
-            <option value="ciencias basicas">Ciencias básicas</option>
-          </Select>
-          </Li>
-          {errores.tipo && <Error msg={errores.tipo} />}
-        <Inpux  type="submit" value="Crear materia" /> 
-        </form>
+          <form onSubmit={handleSubmit} noValidate>
+            <Li>
+              <lettre>
+                <label htmlFor="nombre">Nombre</label>
+              </lettre>
+            </Li>
+            <Li>
+              <Input
+                type="text"
+                name="nombre"
+                id="nombre"
+                value={nombre}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </Li>
+            {errores.nombre && <Error msg={errores.nombre} />}
+            <Li>
+              <lettre>
+                <label htmlFor="tipo">Tipo de materia</label>
+              </lettre>
+            </Li>
+            <Li>
+              <Select
+                value={tipo}
+                onChange={handleChange}
+                name="tipo"
+                id="tipo"
+              >
+                <option value="formacion tecnologica">
+                  Formación Tecnológica
+                </option>
+                <option value="habilidades GyD">
+                  Habilidades gerenciales y directivas
+                </option>
+                <option value="lenguas y metodos">Lenguas y métodos</option>
+                <option value="formacion cientifica">
+                  Formacion científica
+                </option>
+                <option value="ciencias basicas">Ciencias básicas</option>
+              </Select>
+            </Li>
+            {errores.tipo && <Error msg={errores.tipo} />}
+            <Inpux type="submit" value="Crear materia" />
+          </form>
         </ul>
         {parche && (
           <form onSubmit={addMaestro} noValidate>
-            <Li><Seelect value={maestro} onChange={handleMaestro}>
-              <Maestros />
-            </Seelect></Li>
-            <Li><Inpuxes type="submit" value="Añadir maestro" /></Li>
+            <Li>
+              <Seelect value={maestro} onChange={handleMaestro}>
+                <Maestros />
+              </Seelect>
+            </Li>
+            <Li>
+              <Inpuxes type="submit" value="Añadir maestro" />
+            </Li>
           </form>
         )}
         <Divisor>
@@ -298,8 +324,8 @@ const RegistrarMateria = () => {
                   color="inherit"
                   size="small"
                   onClick={() => {
-                  setValidado(false);
-                  setMaestro("");
+                    setValidado(false);
+                    setMaestro("");
                   }}
                 >
                   <CloseIcon fontSize="inherit" />

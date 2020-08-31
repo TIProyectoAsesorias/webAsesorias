@@ -41,11 +41,11 @@ border: 1px solid #707070B0 ;
 `;
 
 const Espace = styled.div`
-padding-top: 3rem;
+  padding-top: 3rem;
 `;
 
 const Li = styled.li`
-list-style: none;
+  list-style: none;
 `;
 
 const Wrapper = styled.div`
@@ -53,17 +53,18 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 const IMG = styled.img`
-margin-left: -1200px;
-margin-right: 10px;
-position:left;
-max-widht: 90%;
-margin-top: 80px;
-margin-bottom: -130px;
-&:hover {
-  cursor: pointer;
+  margin-left: -1200px;
+  margin-right: 10px;
+  position: left;
+  max-widht: 90%;
+  margin-top: 80px;
+  margin-bottom: -130px;
+  &:hover {
+    cursor: pointer;
   }
   &:active {
-    color: #006933;}
+    color: #006933;
+  }
 `;
 const Materias = () => {
   const { firebase } = useContext(FirebaseContext);
@@ -83,17 +84,16 @@ const Materias = () => {
     getMaterias();
   }, []);
   const Clases = () => {
-    
-    return clases.map((clase) =>{ 
-      
+    return clases.map((clase) => {
       return (
-      <CardMateria
-        key={clase.id}
-        materia={clase}
-        msgBtt="Borrar materia"
-        fn={() => borrar(clase)}
-      />
-    )});
+        <CardMateria
+          key={clase.id}
+          materia={clase}
+          msgBtt="Borrar materia"
+          fn={() => borrar(clase)}
+        />
+      );
+    });
   };
   function borrar(clase) {
     firebase.db
@@ -121,11 +121,14 @@ const Materias = () => {
     <div>
       <Layout>
         <nav>
-  
-        <Link href="/gestioneducativa"><IMG width="40px" src="../static/img/ic_flecha.svg"/>
-        </Link><h1>Materias</h1>
+          <Link href="/gestioneducativa">
+            <IMG width="40px" src="../static/img/ic_flecha.svg" />
+          </Link>
+          <h1>Materias</h1>
           <Link href="/gestioneducativa/registrarmateria">
-            <Linke><lettre>Registrar Materia</lettre></Linke>
+            <Linke>
+              <lettre>Registrar Materia</lettre>
+            </Linke>
           </Link>
         </nav>
         <Wrapper>
