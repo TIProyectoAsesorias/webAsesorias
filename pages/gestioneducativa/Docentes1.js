@@ -11,6 +11,23 @@ import {Linke,Li} from "../../components/ui/Botton"
 const link = styled.nav`
   position: flex;
 `;
+const H1 = styled.h1`
+margin-left: -30px;
+margin-top: 80px;
+`;
+const IMG = styled.img`
+margin-left: -1100px;
+margin-right: 150px;
+margin-top: 100px;
+margin-bottom: -110px;
+position:left;
+max-widht: 90%;
+&:hover {
+  cursor: pointer;
+  }
+  &:active {
+    color: #006933;}
+`;
 
 const GestionEdu = () => {
   const { usuario,firebase } = useContext(FirebaseContext);
@@ -79,9 +96,9 @@ const GestionEdu = () => {
     <div onMouseEnter={Comprueba}>
       <Layout>
         <nav>
-          <h1>Maestros</h1>
+        <Link href="/gestioneducativa"><IMG width="40px" src="../static/img/ic_flecha.svg"/></Link>
+          <H1>Maestros</H1>
           <Li> <Link href="/gestioneducativa/Docentes"><Linke><lettre>Añadir docente</lettre></Linke></Link></Li>
-          
         </nav>
         <div
           css={css`

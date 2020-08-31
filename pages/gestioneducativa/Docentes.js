@@ -14,7 +14,6 @@ import Link from "next/link";
 const STATE_INICIAL = {
   nombre: "",
   email: "",
- 
 };
 const Docentes = () => {
   const [error, setError] = useState(false);
@@ -48,6 +47,7 @@ const Docentes = () => {
   const handleTutor=(e)=>{
     setTutor(e.target.checked);
   }
+ 
   const {
     valores,
     errores,
@@ -84,9 +84,80 @@ const Docentes = () => {
       setError(error.message);
     }
   }
+
   const Espace = styled.div`
   padding-top: 7rem;
   `;
+
+  const H2 = styled.h1`
+  margin-top: -20px;
+  margin-bottom: 5px;
+  `;
+  const H22 = styled.h2`
+  `;
+  const Li = styled.li`
+  list-style: none;
+  margin-bottom: 5px;
+  `;
+  const Lit = styled.li`
+  list-style: none;
+  margin-bottom: 2px;
+  `;
+  const Ul = styled.ul`
+  margin-top: -20px;
+  margin-right: 30px;
+  `;
+  const Input = styled.input`
+  width: 300px;
+  margin-left: -4px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  text-align: center;
+  border: solid 1px #707070;
+ `;
+ const Inpux = styled.input`
+  width: 300px;
+  text-align: center;
+  display: center;
+  height: 55px;
+  margin-left: 5px;
+  border-radius: 10px;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  box-shadow: 0px 5px 7px -4px #000000;
+  webkit-box-shadow: 0px 5px 7px -4px #000000; 
+  background: #006933;
+  
+    font-family: var(--unnamed-font-family-roboto);
+    font-style: var(--unnamed-font-style-regular);
+    font-size: var(--unnamed-font-size-30);
+    line-height: var(--unnamed-line-spacing-37);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: #ffffff;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover {
+    background: linear-gradient(180deg, #01602A 0%, #01602A 100%);
+  }
+  &:active {
+    color: #006933;
+  }
+`;
+const IMG = styled.img`
+margin-left: -1050px;
+margin-right: 150px;
+position:left;
+max-widht: 90%;
+&:hover {
+  cursor: pointer;
+  }
+  &:active {
+    color: #006933;}
+`;
+
   function Comprueba(){
     if(!usuario ||usuario.tipo!="maestro"||usuario.tipo!="admin"){
       router.push("/login")
@@ -105,45 +176,47 @@ const Docentes = () => {
               display: flex;
             `}
           >
-      
-            
           </div>
-          <h2>Crear Cuenta</h2>
-
+          <Link href="/gestioneducativa"><IMG width="40px" src="../static/img/ic_flecha.svg"/></Link>
+          <H2>Crear Cuenta</H2>
           <form onSubmit={handleSubmit} noValidate>
-            <label htmlFor="tutor">Tutor</label>
+            <Li><label htmlFor="tutor"><lettre>Seleccione esta casilla si es tutor</lettre></label>
             <input
               type="checkbox"
               id="tutor"
               name="tutor"
               checked={tutor}
               onChange={handleTutor}
-            />
+            /></Li>
 
-            <label htmlFor="nombre">Nombre</label>
-            <input
+            <Li><label htmlFor="nombre"><lettre>Nombre completo</lettre></label></Li>
+            <Li><Input
               type="text"
               id="nombre"
               name="nombre"
-              placeholder="nombre"
+              placeholder="..."
               value={nombre}
               onChange={handleChange}
               onBlur={handleBlur}
-            />
-            <label htmlFor="correo">Correo</label>
-            <input
+            /></Li>
+
+            <Li><label htmlFor="correo"><lettre>Correo electrónico</lettre></label></Li>
+            <Li><Input
               type="email"
               id="email"
-              placeholder="correo"
+              placeholder="..."
               name="email"
               value={email}
               onChange={handleChange}
               onBlur={handleBlur}
-            />
+            /></Li>
+
             <fieldset>
-              <legend>Horario</legend>
+              <legend><H22>Seleccione el horario</H22></legend>
+              <Ul>
+              <Lit>
               <label htmlFor="lunes">
-                Lunes
+                <lettre>Lunes</lettre>
                 <input
                   type="checkbox"
                   id="lunes"
@@ -168,8 +241,10 @@ const Docentes = () => {
                   </>
                 )}
               </label>
+              </Lit>
+              <Lit>
               <label htmlFor="martes">
-                Martes
+                <lettre>Martes</lettre>
                 <input
                   type="checkbox"
                   id="martes"
@@ -194,8 +269,10 @@ const Docentes = () => {
                   </>
                 )}
               </label>
+              </Lit>
+              <Lit>
               <label htmlFor="miercoles">
-                Miercoles
+                <lettre>Miércoles</lettre>
                 <input
                   type="checkbox"
                   id="miercoles"
@@ -220,8 +297,10 @@ const Docentes = () => {
                   </>
                 )}
               </label>
+              </Lit>
+              <Lit>
               <label htmlFor="jueves">
-                Jueves
+                <lettre>Jueves</lettre>
                 <input
                   type="checkbox"
                   id="jueves"
@@ -246,8 +325,10 @@ const Docentes = () => {
                   </>
                 )}
               </label>
+              </Lit>
+              <Lit>
               <label htmlFor="viernes">
-                Viernes
+                <lettre>Viernes</lettre>
                 <input
                   type="checkbox"
                   id="viernes"
@@ -272,9 +353,10 @@ const Docentes = () => {
                   </>
                 )}
               </label>
+              </Lit>
+              </Ul>
             </fieldset>
-
-            <input type="submit" value="Crear cuenta" />
+            <Inpux type="submit" value="Crear cuenta" />
           </form>
         </>
       </Layout>

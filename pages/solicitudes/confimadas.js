@@ -22,13 +22,16 @@ display: flex;
 align-items: center;
 justify-content: center;
 `;
+const H1 = styled.h1`
+margin-top: 100px;
+`;
 const Confimadas =() => (
   <div>
     <Layout>
       <Nav>
       
     <Link href="/solicitudes"><IMG width="40px" src="../static/img/ic_flecha.svg"/></Link>
-    <h1>Solicitudes confirmadas </h1>
+    <H1>Solicitudes confirmadas </H1>
     </Nav>
     </Layout>
   </div>

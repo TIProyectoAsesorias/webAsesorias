@@ -26,6 +26,7 @@ justify-content: center;
 `;
 
 const H1 = styled.h1`
+margin-top: 100px;
 `;
 
 const Pendientes =() => (
