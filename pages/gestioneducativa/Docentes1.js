@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import * as firefire from "firebase";
 import Layout from "../../components/layout/layout";
 import Link from "next/link";
+import {useRouter} from "next/router"
 import styled from "@emotion/styled";
 import Cartita from "../../components/ui/Cards";
 import { css } from "@emotion/core";
@@ -29,8 +30,9 @@ max-widht: 90%;
 `;
 
 const GestionEdu = () => {
-  const { firebase } = useContext(FirebaseContext);
+  const { usuario,firebase } = useContext(FirebaseContext);
   const [maestros, setMaestros] = useState([]);
+  const router=useRouter();
   useEffect(() => {
     const getMaestros = () => {
       firebase.db
@@ -82,8 +84,16 @@ const GestionEdu = () => {
         });
       });
   }
+  function Comprueba(){
+    if(!usuario ||usuario.tipo!="maestro"||usuario.tipo!="admin"){
+      router.push("/login")
+
+    }
+    return null
+      
+  }
   return (
-    <div>
+    <div onMouseEnter={Comprueba}>
       <Layout>
         <nav>
         <Link href="/gestioneducativa"><IMG width="40px" src="../static/img/ic_flecha.svg"/></Link>

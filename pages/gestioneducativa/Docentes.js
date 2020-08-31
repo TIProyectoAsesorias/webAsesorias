@@ -158,8 +158,16 @@ max-widht: 90%;
     color: #006933;}
 `;
 
+  function Comprueba(){
+    if(!usuario ||usuario.tipo!="maestro"||usuario.tipo!="admin"){
+      router.push("/login")
+
+    }
+    return null
+      
+  }
   return (
-    <div>
+    <div onMouseEnter={Comprueba}>
 <Espace></Espace>
       <Layout>
         <>

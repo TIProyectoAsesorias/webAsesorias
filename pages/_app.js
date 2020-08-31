@@ -15,7 +15,7 @@ const usuario=useAutenticacion();
                 usuario
             }
         }>
-{usuario?<Component {...pageProps}/>:<Login/>}
+<Component {...pageProps}/>
         </FirebaseContext.Provider>
     )
 }
@@ -23,4 +23,5 @@ export default MyApp;
 /*usuario.propTypes = {
    Component:PropTypes.any,
    pageProps:PropTypes.object
-  };*/
+  };
+  {usuario?<Component {...pageProps}/>:<Login/>}*/
