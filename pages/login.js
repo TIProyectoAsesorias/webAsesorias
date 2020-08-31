@@ -95,7 +95,6 @@ const Login = () => {
   const {
     valores,
     errores,
-
     handleSubmit,
     handleChange,
     handleBlur,
@@ -108,10 +107,8 @@ const Login = () => {
         ...doc.data(),
       };
     });
-
     setMaestro(usuario[0]);
   }
-
   async function logIn() {
     try {
       firebase.db
@@ -127,11 +124,10 @@ const Login = () => {
         catch(error){
         await firebase.registrar(maestro.nombre, email, password);
         Router.push("/");}
-      } 
+      }
       else {
         await firebase.login(email, password);
         Router.push("/");}
-      
     } 
     catch (error) {
       console.error("Error", error.message);
@@ -174,13 +170,7 @@ const Login = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-
-         
-
             {errores.password && <Error msg={errores.password} />}
-            
-            
-            
             <Inpux type="submit" value="Iniciar sesión" />
           </Form>
         </>

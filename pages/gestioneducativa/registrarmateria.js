@@ -19,6 +19,142 @@ width=100%;
   margin-top:10px;
 }
 `;
+const Li = styled.li`
+list-style: none;
+text-align: center;
+margin-left: -25px;
+`;
+const Linke = styled.button`
+width: 400px;
+align-items: center;
+height: 75px;
+text-align: center;
+display: center;
+list-style: none;
+margin-top: 0px;
+margin-bottom: 0px;
+margin-left: -40px;
+padding: 10px 0;
+box-shadow: 0px 5px 7px -4px #000000;
+border-radius: 10px;
+background: #FFFFFF;
+border: 1px solid #707070B0 ;
+&:hover {
+  cursor: pointer;
+  }
+  &:active {
+    color: #006933;
+  } 
+  &:hover { background:  #f6f6f6;
+  }
+  &:hover{
+    transform: translateX(300px) skewX(-15deg)
+    opacity: .6;
+    transition: .7s;
+    border-radius: 10px;
+    }
+`;
+const IMG = styled.img`
+margin-left: -1200px;
+margin-right: 10px;
+position:left;
+max-widht: 90%;
+margin-top: -80px;
+margin-bottom: -130px;
+&:hover {
+  cursor: pointer;
+  }
+  &:active {
+    color: #006933;}
+`;
+const Input = styled.input`
+  width: 300px;
+  margin-left: -4px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: solid 1px #707070;
+`;
+const Select = styled.select`
+  width: 300px;
+  margin-left: -4px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: solid 1px #707070;
+`;
+const Seelect = styled.select`
+  width: 300px;
+  margin-left: 35px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: solid 1px #707070;
+`;
+const Inpux = styled.input`
+  width: 300px;
+  text-align: center;
+  display: center;
+  height: 55px;
+  margin-left: -30px;
+  border-radius: 10px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 5px 7px -4px #000000;
+  webkit-box-shadow: 0px 5px 7px -4px #000000; 
+  background: #006933;
+  
+    font-family: var(--unnamed-font-family-roboto);
+    font-style: var(--unnamed-font-style-regular);
+    font-size: var(--unnamed-font-size-30);
+    line-height: var(--unnamed-line-spacing-37);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: #ffffff;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover {
+    background: linear-gradient(180deg, #01602A 0%, #01602A 100%);
+  }
+  &:active {
+    color: #006933;
+  }
+`;
+
+const Inpuxes = styled.input`
+  width: 300px;
+  text-align: center;
+  display: center;
+  height: 55px;
+  margin-left: 35px;
+  border-radius: 10px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 5px 7px -4px #000000;
+  webkit-box-shadow: 0px 5px 7px -4px #000000; 
+  background: #006933;
+  
+    font-family: var(--unnamed-font-family-roboto);
+    font-style: var(--unnamed-font-style-regular);
+    font-size: var(--unnamed-font-size-30);
+    line-height: var(--unnamed-line-spacing-37);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: #ffffff;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover {
+    background: linear-gradient(180deg, #01602A 0%, #01602A 100%);
+  }
+  &:active {
+    color: #006933;
+  }
+`;
 const STATE_INICIAL = {
   nombre: "",
   tipo: "",
@@ -77,7 +213,6 @@ const RegistrarMateria = () => {
   }
   function addMaestro(e) {
     e.preventDefault();
- 
       const docentes = firebase.db
         .collection("usuarios")
         .where("nombre", "==", maestro)
@@ -101,8 +236,6 @@ const RegistrarMateria = () => {
           });
         });
       });
-    
-
     setValidado(true);
   }
   const Maestros = () => {
@@ -117,18 +250,13 @@ const RegistrarMateria = () => {
     <div>
       <Layout>
         <nav>
+        <Link href="/gestioneducativa"><IMG width="40px" src="../static/img/ic_flecha.svg"/></Link>
           <h1>Registrar Materia</h1>
-          <Link href="/gestioneducativa">Volver</Link>
-          <ul>
-            <li>
-              <button>Materia</button>
-            </li>
-          </ul>
         </nav>
-
+        <ul>
         <form onSubmit={handleSubmit} noValidate>
-          <label htmlFor="nombre">Nombre</label>
-          <input
+          <Li><lettre><label htmlFor="nombre">Nombre</label></lettre></Li>
+          <Li><Input
             type="text"
             name="nombre"
             id="nombre"
@@ -136,29 +264,31 @@ const RegistrarMateria = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+         </Li>
           {errores.nombre && <Error msg={errores.nombre} />}
-          <label htmlFor="tipo">Tipo de materia</label>
-          <select value={tipo} onChange={handleChange} name="tipo" id="tipo">
-            <option value="formacion tecnologica">Formacion Tecnologica</option>
+          <Li><lettre><label htmlFor="tipo">Tipo de materia</label></lettre></Li>
+          <Li><Select value={tipo} onChange={handleChange} name="tipo" id="tipo">
+          <option value="formacion tecnologica">Formación Tecnológica</option>
             <option value="habilidades GyD">
               Habilidades gerenciales y directivas
             </option>
-            <option value="lenguas y metodos">Lenguas y metodos</option>
-            <option value="formacion cientifica">Formacion cientifica</option>
-            <option value="ciencias basicas">Ciencias basicas</option>
-          </select>
+            <option value="lenguas y metodos">Lenguas y métodos</option>
+            <option value="formacion cientifica">Formacion científica</option>
+            <option value="ciencias basicas">Ciencias básicas</option>
+          </Select>
+          </Li>
           {errores.tipo && <Error msg={errores.tipo} />}
-          <input type="submit" value="Crear materia" />
+        <Inpux  type="submit" value="Crear materia" /> 
         </form>
+        </ul>
         {parche && (
           <form onSubmit={addMaestro} noValidate>
-            <select value={maestro} onChange={handleMaestro}>
+            <Li><Seelect value={maestro} onChange={handleMaestro}>
               <Maestros />
-            </select>
-            <input type="submit" value="Añadir maestro" />
+            </Seelect></Li>
+            <Li><Inpuxes type="submit" value="Añadir maestro" /></Li>
           </form>
         )}
-
         <Divisor>
           <Collapse in={validado}>
             <Alert
@@ -168,8 +298,8 @@ const RegistrarMateria = () => {
                   color="inherit"
                   size="small"
                   onClick={() => {
-                    setValidado(false);
-                    setMaestro("");
+                  setValidado(false);
+                  setMaestro("");
                   }}
                 >
                   <CloseIcon fontSize="inherit" />

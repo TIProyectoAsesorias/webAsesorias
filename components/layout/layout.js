@@ -37,7 +37,6 @@ const Layout = (props) => {
 
           /* Character Styles */
 
-
           headerlettre {
             font-family: var(--unnamed-font-family-roboto);
             font-style: var(--unnamed-font-style-regular);
@@ -46,6 +45,16 @@ const Layout = (props) => {
             letter-spacing: var(--unnamed-character-spacing-0);
             color: var(--unnamed-color-f1f1f1);
           }
+
+          lettrewhite {
+            font-family: var(--unnamed-font-family-roboto);
+            font-style: var(--unnamed-font-style-regular);
+            font-size: var(--unnamed-font-size-30);
+            line-height: var(--unnamed-line-spacing-37);
+            letter-spacing: var(--unnamed-character-spacing-0);
+            color: var(--blanco: #ffffff);
+          }
+
           lettre {
             font-family: var(--unnamed-font-family-roboto);
             font-style: var(--unnamed-font-style-regular);
@@ -54,6 +63,7 @@ const Layout = (props) => {
             letter-spacing: var(--unnamed-character-spacing-0);
             color: var(--unnamed-color-#000000B8);
           }
+          
           lettres {
             font-family: var(--unnamed-font-family-roboto);
             font-style: var(--unnamed-font-style-regular);
