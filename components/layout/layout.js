@@ -127,6 +127,7 @@ const Layout = (props) => {
           rel="stylesheet"
           type="text/css"
         />
+        <link rel="icon" href="/static/AS.png"  sizes="32x32" type="image/png"/>
         <title>Asesorias</title>
       </Head>
       <Header />
