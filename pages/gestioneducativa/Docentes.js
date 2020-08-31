@@ -87,8 +87,16 @@ const Docentes = () => {
   const Espace = styled.div`
   padding-top: 7rem;
   `;
+  function Comprueba(){
+    if(!usuario ||usuario.tipo!="maestro"||usuario.tipo!="admin"){
+      router.push("/login")
+
+    }
+    return null
+      
+  }
   return (
-    <div>
+    <div onMouseEnter={Comprueba}>
 <Espace></Espace>
       <Layout>
         <>
