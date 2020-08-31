@@ -13,6 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Collapse from "@material-ui/core/Collapse";
 import CloseIcon from "@material-ui/icons/Close";
 import * as firefire from "firebase";
+import { css } from "@emotion/core";
 const Divisor = styled.div`
 width=100%;
 & > * + *{
@@ -255,10 +256,29 @@ const RegistrarMateria = () => {
     <div>
       <Layout>
         <nav>
-          <Link href="/gestioneducativa">
-            <IMG width="40px" src="../static/img/ic_flecha.svg" />
-          </Link>
-          <h1>Registrar Materia</h1>
+          <div
+            css={css`
+              background:linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../../static/img/fondos/${tipo.replace(
+                / /g,
+                ""
+              )}.png);
+              background-size: auto;
+            `}
+          >
+           
+              <Link href="/gestioneducativa">
+                <IMG width="40px" src="../static/img/ic_flecha.svg" />
+              </Link>
+
+              <h1
+                css={css`
+                  color: #313131;
+                `}
+              >
+                Registrar Materia
+              </h1>
+            
+          </div>
         </nav>
         <ul>
           <form onSubmit={handleSubmit} noValidate>
@@ -315,32 +335,31 @@ const RegistrarMateria = () => {
               </Seelect>
             </Li>
             <Divisor>
-          <Collapse in={validado}>
-            <Alert
-              action={
-                <IconButton
-                  aria-label="close"
-                  color="inherit"
-                  size="small"
-                  onClick={() => {
-                    setValidado(false);
-                    setMaestro("");
-                  }}
+              <Collapse in={validado}>
+                <Alert
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setValidado(false);
+                        setMaestro("");
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
                 >
-                  <CloseIcon fontSize="inherit" />
-                </IconButton>
-              }
-            >
-              Maestro agregado, cierra este mensaje para agregar otro
-            </Alert>
-          </Collapse>
-        </Divisor>
+                  Maestro agregado, cierra este mensaje para agregar otro
+                </Alert>
+              </Collapse>
+            </Divisor>
             <Li>
               <Inpuxes type="submit" value="Añadir maestro" />
             </Li>
           </form>
         )}
-        
       </Layout>
     </div>
   );
