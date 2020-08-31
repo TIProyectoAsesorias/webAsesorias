@@ -1,5 +1,5 @@
 import Layout from "../../components/layout/layout";
-import { withRouter,useRouter } from "next/router";
+import { withRouter, useRouter } from "next/router";
 import { css } from "@emotion/core";
 import useValidar from "../../hooks/useValidar";
 import styled from "@emotion/styled";
@@ -13,7 +13,7 @@ const Espace = styled.div`
   padding-top: 7rem;
 `;
 function editarMaestro({ router }) {
-  const cambiar=useRouter();
+  const cambiar = useRouter();
   const [maestro, setMaestro] = useState(router.query);
 
   const [materias, setMaterias] = useState([]);
@@ -42,7 +42,7 @@ function editarMaestro({ router }) {
         viernesSalida: valores.viernesSalida,
       },
     };
-   
+
     firebase.db
       .collection("usuarios")
       .where("nombre", "==", maestro.nombre)
@@ -53,21 +53,21 @@ function editarMaestro({ router }) {
           doc.ref.update(edicion);
         });
       });
-      setMaestro({
-        nombre: valores.nombre,
-        tutor: valores.tutor,
-        lunesEntrada: valores.lunesEntrada,
-        lunesSalida: valores.lunesSalida,
-        martesEntrada: valores.martesEntrada,
-        martesSalida: valores.martesSalida,
-        miercolesEntrada: valores.miercolesEntrada,
-        miercolesSalida: valores.miercolesSalida,
-        juevesEntrada: valores.juevesEntrada,
-        juevesSalida: valores.juevesSalida,
-        viernesEntrada: valores.viernesEntrada,
-        viernesSalida: valores.viernesSalida,
-      })
-      cambiar.push("/gestioneducativa/Docentes1");
+    setMaestro({
+      nombre: valores.nombre,
+      tutor: valores.tutor,
+      lunesEntrada: valores.lunesEntrada,
+      lunesSalida: valores.lunesSalida,
+      martesEntrada: valores.martesEntrada,
+      martesSalida: valores.martesSalida,
+      miercolesEntrada: valores.miercolesEntrada,
+      miercolesSalida: valores.miercolesSalida,
+      juevesEntrada: valores.juevesEntrada,
+      juevesSalida: valores.juevesSalida,
+      viernesEntrada: valores.viernesEntrada,
+      viernesSalida: valores.viernesSalida,
+    });
+    cambiar.push("/gestioneducativa/Docentes1");
   }
   const handleMateria = (materia) => {
     const editarMaestro = firebase.db
@@ -94,16 +94,38 @@ function editarMaestro({ router }) {
       });
     });
   };
-  useEffect(() => {
-    const getMaterias = () => {
+  /*  useEffect(() => {
+    const getMaestro = () => {
       firebase.db
         .collection("usuarios")
+        .where("nombre", "==", router.query.nombre)
         .where("tipo", "==", "maestro")
-        .where("nombre", "==", maestro.nombre)
-        .onSnapshot(manejarSnapshot);
+        .where("email", "==", router.query.email).onSnapshot(function (snap) {
+          const datos=snap.docs.map((doc)=>{
+            return doc.data()
+          })
+          setMaestro(datos[0])
+        }
+        );
+    };
+    getMaestro();
+  }, [router.query]); */
+  useEffect(() => {
+    const getMaterias = () => {
+      try {
+        firebase.db
+          .collection("usuarios")
+          .where("tipo", "==", "maestro")
+          .where("nombre", "==", maestro.nombre)
+          .onSnapshot(manejarSnapshot);
+      } catch (error) {
+        cambiar.push("/gestioneducativa/Docentes1", undefined, {
+          shallow: true,
+        });
+      }
     };
     getMaterias();
-  }, []);
+  }, [maestro]);
   function manejarSnapshot(snapshot) {
     const materias = snapshot.docs.map((doc) => {
       return doc.data().materias;

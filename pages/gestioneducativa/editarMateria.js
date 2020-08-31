@@ -1,5 +1,5 @@
 import Layout from "../../components/layout/layout";
-import { withRouter,useRouter } from "next/router";
+import { withRouter, useRouter } from "next/router";
 import { css } from "@emotion/core";
 import useValidar from "../../hooks/useValidar";
 import styled from "@emotion/styled";
@@ -11,28 +11,33 @@ const Espace = styled.div`
   padding-top: 7rem;
 `;
 function editarMateria({ router }) {
-    const cambiar=useRouter();
+  const cambiar = useRouter();
   const [materia, setMaterias] = useState(router.query);
-  const [flag,setFlag]=useState(false);
+  const [flag, setFlag] = useState(false);
   const [maestros, setMaestros] = useState([]);
   const { firebase } = useContext(FirebaseContext);
   useEffect(() => {
     const getMaestros = () => {
-
-
-      firebase.db
-        .collection("materias")
-        .where("nombre", "==", materia.nombre).where("tipo", "==", materia.tipo)
-        .onSnapshot(manejarSnap);
+      try {
+        firebase.db
+          .collection("materias")
+          .where("nombre", "==", materia.nombre)
+          .where("tipo", "==", materia.tipo)
+          .onSnapshot(manejarSnap);
+      } catch (error) {
+        cambiar.push("/gestioneducativa/Materias", undefined, {
+          shallow: true,
+        });
+      }
     };
     getMaestros();
   }, []);
   function manejarSnap(snap) {
-    console.log(materia)
+    console.log(materia);
     const maestros = snap.docs.map((doc) => {
       return doc.data().docentes;
     });
-   
+
     setMaestros(maestros[0]);
   }
   const {
@@ -47,19 +52,18 @@ function editarMateria({ router }) {
       nombre: valores.nombre,
       tipo: valores.tipo,
     };
-setMaterias(edicion);
+    setMaterias(edicion);
     firebase.db
       .collection("materias")
       .where("nombre", "==", materia.nombre)
       .where("tipo", "==", materia.tipo)
       .get()
       .then(function (snap) {
-          snap.forEach(function (doc) {
-              doc.ref.update(edicion);
-          })
+        snap.forEach(function (doc) {
+          doc.ref.update(edicion);
+        });
       });
-      cambiar.push("/gestioneducativa/Materias")
-    
+    cambiar.push("/gestioneducativa/Materias");
   }
   function validarMateria(valores) {
     let errores = {};

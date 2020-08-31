@@ -2,37 +2,38 @@ import React, { useContext, useEffect, useState } from "react";
 import * as firefire from "firebase";
 import Layout from "../../components/layout/layout";
 import Link from "next/link";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 import Cartita from "../../components/ui/Cards";
 import { css } from "@emotion/core";
 import { FirebaseContext } from "../../firebase";
-import {Linke,Li} from "../../components/ui/Botton"
+import { Linke, Li } from "../../components/ui/Botton";
 const link = styled.nav`
   position: flex;
 `;
 const H1 = styled.h1`
-margin-left: -30px;
-margin-top: 80px;
+  margin-left: -30px;
+  margin-top: 80px;
 `;
 const IMG = styled.img`
-margin-left: -1100px;
-margin-right: 150px;
-margin-top: 100px;
-margin-bottom: -110px;
-position:left;
-max-widht: 90%;
-&:hover {
-  cursor: pointer;
+  margin-left: -1100px;
+  margin-right: 150px;
+  margin-top: 100px;
+  margin-bottom: -110px;
+  position: left;
+  max-widht: 90%;
+  &:hover {
+    cursor: pointer;
   }
   &:active {
-    color: #006933;}
+    color: #006933;
+  }
 `;
 
 const GestionEdu = () => {
-  const { usuario,firebase } = useContext(FirebaseContext);
+  const { usuario, firebase } = useContext(FirebaseContext);
   const [maestros, setMaestros] = useState([]);
-  const router=useRouter();
+  const router = useRouter();
   useEffect(() => {
     const getMaestros = () => {
       firebase.db
@@ -84,21 +85,30 @@ const GestionEdu = () => {
         });
       });
   }
-  function Comprueba(){
-    if(!usuario ||usuario.tipo!="maestro"||usuario.tipo!="admin"){
-      router.push("/login")
-
+  function Comprueba() {
+    if (usuario.tipo === "maestro" || usuario.tipo === "admin") {
+      return null;
+    } else {
+      router.push("/login");
     }
-    return null
-      
+    return null;
   }
   return (
     <div onMouseEnter={Comprueba}>
       <Layout>
         <nav>
-        <Link href="/gestioneducativa"><IMG width="40px" src="../static/img/ic_flecha.svg"/></Link>
+          <Link href="/gestioneducativa">
+            <IMG width="40px" src="../static/img/ic_flecha.svg" />
+          </Link>
           <H1>Maestros</H1>
-          <Li> <Link href="/gestioneducativa/Docentes"><Linke><lettre>Añadir docente</lettre></Linke></Link></Li>
+          <Li>
+            {" "}
+            <Link href="/gestioneducativa/Docentes">
+              <Linke>
+                <lettre>Añadir docente</lettre>
+              </Linke>
+            </Link>
+          </Li>
         </nav>
         <div
           css={css`
