@@ -5,6 +5,7 @@ import Link from "next/link";
 import styled from "@emotion/styled";
 import { FirebaseContext } from "../../firebase";
 import CardMateria from "../../components/ui/CardMateria";
+import { useRouter } from "next/router";
 const link = styled.nav`
   position: flex;
 `;
@@ -67,19 +68,28 @@ const IMG = styled.img`
   }
 `;
 const Materias = () => {
-  const { firebase } = useContext(FirebaseContext);
+  const { usuario, firebase } = useContext(FirebaseContext);
   const [clases, setClases] = useState([]);
+  const cambiar = useRouter();
   useEffect(() => {
     const getMaterias = () => {
-      firebase.db.collection("materias").onSnapshot(function (snap) {
-        const materias = snap.docs.map(function (doc) {
-          return {
-            id: doc.id,
-            ...doc.data(),
-          };
-        });
-        setClases(materias);
-      });
+      if (usuario) {
+        if (usuario.tipo == "admin") {
+          firebase.db.collection("materias").onSnapshot(function (snap) {
+            const materias = snap.docs.map(function (doc) {
+              return {
+                id: doc.id,
+                ...doc.data(),
+              };
+            });
+            setClases(materias);
+          });
+        } else {
+          cambiar.push("/login", undefined, { shallow: true });
+        }
+      } else {
+        cambiar.push("/login", undefined, { shallow: true });
+      }
     };
     getMaterias();
   }, []);

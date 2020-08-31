@@ -169,21 +169,25 @@ const RegistrarMateria = () => {
   const [docen, setDocentes] = useState([]);
   useEffect(() => {
     const Fn = () => {
-      if (usuario.tipo == "admin" || usuario.tipo === "maestro") {
-        firebase.db
-          .collection("usuarios")
-          .where("tipo", "==", "maestro")
-          .onSnapshot(function (snapshot) {
-            const maestros = snapshot.docs.map((doc) => {
-              return {
-                id: doc.id,
-                ...doc.data(),
-              };
+      if (usuario) {
+        if (usuario.tipo === "admin") {
+          firebase.db
+            .collection("usuarios")
+            .where("tipo", "==", "maestro")
+            .onSnapshot(function (snapshot) {
+              const maestros = snapshot.docs.map((doc) => {
+                return {
+                  id: doc.id,
+                  ...doc.data(),
+                };
+              });
+              setMaestros(maestros);
             });
-            setMaestros(maestros);
-          });
+        } else {
+          Router.push("/login", undefined, { shallow: true });
+        }
       } else {
-        Router.push("/");
+        Router.push("/login", undefined, { shallow: true });
       }
     };
     Fn();
@@ -310,12 +314,7 @@ const RegistrarMateria = () => {
                 <Maestros />
               </Seelect>
             </Li>
-            <Li>
-              <Inpuxes type="submit" value="Añadir maestro" />
-            </Li>
-          </form>
-        )}
-        <Divisor>
+            <Divisor>
           <Collapse in={validado}>
             <Alert
               action={
@@ -336,6 +335,12 @@ const RegistrarMateria = () => {
             </Alert>
           </Collapse>
         </Divisor>
+            <Li>
+              <Inpuxes type="submit" value="Añadir maestro" />
+            </Li>
+          </form>
+        )}
+        
       </Layout>
     </div>
   );

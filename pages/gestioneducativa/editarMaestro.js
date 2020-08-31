@@ -13,10 +13,10 @@ const Espace = styled.div`
   padding-top: 7rem;
 `;
 const Li = styled.li`
-    list-style: none;
-    margin-bottom: 5px;
-  `;
-  const Input = styled.input`
+  list-style: none;
+  margin-bottom: 5px;
+`;
+const Input = styled.input`
   width: 300px;
   margin-left: -4px;
   height: 40px;
@@ -26,41 +26,41 @@ const Li = styled.li`
   border: solid 1px #707070;
 `;
 const Inpux = styled.input`
-    width: 300px;
-    text-align: center;
-    display: center;
-    height: 55px;
-    margin-left: 5px;
-    border-radius: 10px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    box-shadow: 0px 5px 7px -4px #000000;
-    webkit-box-shadow: 0px 5px 7px -4px #000000;
-    background: #006933;
+  width: 300px;
+  text-align: center;
+  display: center;
+  height: 55px;
+  margin-left: 5px;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  box-shadow: 0px 5px 7px -4px #000000;
+  webkit-box-shadow: 0px 5px 7px -4px #000000;
+  background: #006933;
 
-    font-family: var(--unnamed-font-family-roboto);
-    font-style: var(--unnamed-font-style-regular);
-    font-size: var(--unnamed-font-size-30);
-    line-height: var(--unnamed-line-spacing-37);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: #ffffff;
+  font-family: var(--unnamed-font-family-roboto);
+  font-style: var(--unnamed-font-style-regular);
+  font-size: var(--unnamed-font-size-30);
+  line-height: var(--unnamed-line-spacing-37);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: #ffffff;
 
-    &:hover {
-      cursor: pointer;
-    }
-    &:hover {
-      background: linear-gradient(180deg, #01602a 0%, #01602a 100%);
-    }
-    &:active {
-      color: #006933;
-    }
-  `;
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover {
+    background: linear-gradient(180deg, #01602a 0%, #01602a 100%);
+  }
+  &:active {
+    color: #006933;
+  }
+`;
 function editarMaestro({ router }) {
   const cambiar = useRouter();
   const [maestro, setMaestro] = useState(router.query);
 
   const [materias, setMaterias] = useState([]);
-  const { firebase } = useContext(FirebaseContext);
+  const { usuario, firebase } = useContext(FirebaseContext);
   const {
     valores,
     errores,
@@ -155,16 +155,24 @@ function editarMaestro({ router }) {
   }, [router.query]); */
   useEffect(() => {
     const getMaterias = () => {
-      try {
-        firebase.db
-          .collection("usuarios")
-          .where("tipo", "==", "maestro")
-          .where("nombre", "==", maestro.nombre)
-          .onSnapshot(manejarSnapshot);
-      } catch (error) {
-        cambiar.push("/gestioneducativa/Docentes1", undefined, {
-          shallow: true,
-        });
+      if (usuario) {
+        if (usuario.tipo == "admin") {
+          try {
+            firebase.db
+              .collection("usuarios")
+              .where("tipo", "==", "maestro")
+              .where("nombre", "==", maestro.nombre)
+              .onSnapshot(manejarSnapshot);
+          } catch (error) {
+            cambiar.push("/gestioneducativa/Docentes1", undefined, {
+              shallow: true,
+            });
+          }
+        } else {
+          cambiar.push("/login", undefined, { shallow: true });
+        }
+      } else {
+        cambiar.push("/login", undefined, { shallow: true });
       }
     };
     getMaterias();
@@ -213,125 +221,137 @@ function editarMaestro({ router }) {
             <>
               <div>
                 <form onSubmit={handleSubmit} noValidate>
-                  <Li><label htmlFor="nombre"><lettre>Nombre</lettre></label></Li>
-                  <Li><Input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    value={valores.nombre}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  /></Li>
-                  <Li><label htmlFor="tutor"><lettre>Tutor</lettre></label>
-                  <input
-                    type="checkbox"
-                    name="tutor"
-                    checked={valores.tutor}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
+                  <Li>
+                    <label htmlFor="nombre">
+                      <lettre>Nombre</lettre>
+                    </label>
+                  </Li>
+                  <Li>
+                    <Input
+                      type="text"
+                      id="nombre"
+                      name="nombre"
+                      value={valores.nombre}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Li>
+                  <Li>
+                    <label htmlFor="tutor">
+                      <lettre>Tutor</lettre>
+                    </label>
+                    <input
+                      type="checkbox"
+                      name="tutor"
+                      checked={valores.tutor}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
                   </Li>
                   <fieldset>
-                    <legend><h2>Horario</h2></legend>
-                    <Li><label htmlFor="lunes">
-                      <lettre>Lunes</lettre>
-                      <input
-                        type="time"
-                        name="lunesEntrada"
-                        value={valores.lunesEntrada}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <input
-                        type="time"
-                        name="lunesSalida"
-                        value={valores.lunesSalida}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </label>
+                    <legend>
+                      <h2>Horario</h2>
+                    </legend>
+                    <Li>
+                      <label htmlFor="lunes">
+                        <lettre>Lunes</lettre>
+                        <input
+                          type="time"
+                          name="lunesEntrada"
+                          value={valores.lunesEntrada}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        <input
+                          type="time"
+                          name="lunesSalida"
+                          value={valores.lunesSalida}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </label>
                     </Li>
                     <Li>
-                    <label htmlFor="martes">
-                      <lettre>Martes</lettre>
-                      <input
-                        type="time"
-                        name="martesEntrada"
-                        value={valores.martesEntrada}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <input
-                        type="time"
-                        name="martesSalida"
-                        value={valores.martesSalida}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </label>
+                      <label htmlFor="martes">
+                        <lettre>Martes</lettre>
+                        <input
+                          type="time"
+                          name="martesEntrada"
+                          value={valores.martesEntrada}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        <input
+                          type="time"
+                          name="martesSalida"
+                          value={valores.martesSalida}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </label>
                     </Li>
                     <Li>
-                    <label htmlFor="miercoles">
-                      <lettre>Miercoles</lettre>
-                      <input
-                        type="time"
-                        name="miercolesEntrada"
-                        value={valores.miercolesEntrada}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <input
-                        type="time"
-                        name="miercolesSalida"
-                        value={valores.miercolesSalida}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </label>
+                      <label htmlFor="miercoles">
+                        <lettre>Miercoles</lettre>
+                        <input
+                          type="time"
+                          name="miercolesEntrada"
+                          value={valores.miercolesEntrada}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        <input
+                          type="time"
+                          name="miercolesSalida"
+                          value={valores.miercolesSalida}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </label>
                     </Li>
                     <Li>
-                    <label htmlFor="jueves">
-                      <lettre>Jueves</lettre>
-                      <input
-                        type="time"
-                        name="juevesEntrada"
-                        value={valores.juevesEntrada}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <input
-                        type="time"
-                        name="juevesSalida"
-                        value={valores.juevesSalida}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </label>
+                      <label htmlFor="jueves">
+                        <lettre>Jueves</lettre>
+                        <input
+                          type="time"
+                          name="juevesEntrada"
+                          value={valores.juevesEntrada}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        <input
+                          type="time"
+                          name="juevesSalida"
+                          value={valores.juevesSalida}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </label>
                     </Li>
                     <Li>
-                    <label htmlFor="viernes">
-                      <lettre>Viernes</lettre>
-                      <input
-                        type="time"
-                        name="viernesEntrada"
-                        value={valores.viernesEntrada}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <input
-                        type="time"
-                        name="viernesSalida"
-                        value={valores.viernesSalida}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </label>
+                      <label htmlFor="viernes">
+                        <lettre>Viernes</lettre>
+                        <input
+                          type="time"
+                          name="viernesEntrada"
+                          value={valores.viernesEntrada}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        <input
+                          type="time"
+                          name="viernesSalida"
+                          value={valores.viernesSalida}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </label>
                     </Li>
                   </fieldset>
                   <h2>Materias</h2>
                   <Inpux type="submit" value="EDITAR" />
                 </form>
-               
+
                 <Materias />
               </div>
             </>

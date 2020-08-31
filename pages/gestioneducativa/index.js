@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import Layout from "../../components/layout/layout";
 import Link from "next/link";
 import styled from "@emotion/styled";
-
+import { useRouter } from "next/router";
+import { FirebaseContext } from "../../firebase";
 const Linke = styled.button`
 position: flex;
 width: 381px;
@@ -47,28 +48,44 @@ const Li = styled.li`
   list-style: none;
 `;
 
-const GestionEdu = () => (
-  <div>
-    <Layout>
-      <Espace></Espace>
-      <nav>
-        <h1>Gestión educativa</h1>
-        <Li>
-          <Link href="/gestioneducativa/Docentes1">
-            <Linke>
-              <lettre>Docentes</lettre>
-            </Linke>
-          </Link>
-        </Li>
-        <Li>
-          <Link href="/gestioneducativa/Materias">
-            <Linke>
-              <lettre>Materias</lettre>
-            </Linke>
-          </Link>
-        </Li>
-      </nav>
-    </Layout>
-  </div>
-);
+const GestionEdu = () => {
+  const { usuario } = useContext(FirebaseContext);
+  const cambiar = useRouter();
+  useEffect(() => {
+    const comprueba= () => {
+    if(usuario) { if (usuario.tipo == "admin") {
+        return null;
+      } else {
+        cambiar.push("/login", undefined, { shallow: true });
+      }}else{
+        cambiar.push("/login", undefined, { shallow: true });
+      }
+    };
+    comprueba();
+  }, []);
+  return (
+    <div>
+      <Layout>
+        <Espace></Espace>
+        <nav>
+          <h1>Gestión educativa</h1>
+          <Li>
+            <Link href="/gestioneducativa/Docentes1">
+              <Linke>
+                <lettre>Docentes</lettre>
+              </Linke>
+            </Link>
+          </Li>
+          <Li>
+            <Link href="/gestioneducativa/Materias">
+              <Linke>
+                <lettre>Materias</lettre>
+              </Linke>
+            </Link>
+          </Li>
+        </nav>
+      </Layout>
+    </div>
+  );
+};
 export default GestionEdu;

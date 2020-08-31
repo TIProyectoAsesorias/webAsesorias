@@ -86,10 +86,14 @@ const GestionEdu = () => {
       });
   }
   function Comprueba() {
-    if (usuario.tipo === "maestro" || usuario.tipo === "admin") {
-      return null;
+    if (usuario) {
+      if (usuario.tipo === "maestro" || usuario.tipo === "admin") {
+        return null;
+      } else {
+        router.push("/login");
+      }
     } else {
-      router.push("/login");
+      router.push("/login", undefined, { shallow: true });
     }
     return null;
   }
