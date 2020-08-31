@@ -10,7 +10,7 @@ function useAutenticacion() {
         firebase.db
           .collection("usuarios")
           .where("nombre", "==", usuario.displayName)
-          .where("email","==",usuario.email)
+          .where("email", "==", usuario.email)
           .onSnapshot(manejarSnapshot);
         /*    setUsuarioAut(); */
       } else {
@@ -26,8 +26,8 @@ function useAutenticacion() {
         ...doc.data(),
       };
     });
-    console.log(usuario[0])
-    setUsuarioAut(usuario[0])
+    console.log(usuario[0]);
+    setUsuarioAut(usuario[0]);
   }
   return usuarioAut;
 }

@@ -117,19 +117,18 @@ const Login = () => {
         .where("tipo", "==", "maestro")
         .onSnapshot(manejarSnapshot);
       if (maestro) {
-        try{
+        try {
+          await firebase.login(email, password);
+          Router.push("/");
+        } catch (error) {
+          await firebase.registrar(maestro.nombre, email, password);
+          Router.push("/");
+        }
+      } else {
         await firebase.login(email, password);
         Router.push("/");
       }
-        catch(error){
-        await firebase.registrar(maestro.nombre, email, password);
-        Router.push("/");}
-      }
-      else {
-        await firebase.login(email, password);
-        Router.push("/");}
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Error", error.message);
       setError(error.message);
     }
