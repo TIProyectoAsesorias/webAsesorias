@@ -158,14 +158,15 @@ max-widht: 90%;
     color: #006933;}
 `;
 
-  function Comprueba(){
-    if(!usuario ||usuario.tipo!="maestro"||usuario.tipo!="admin"){
-      router.push("/login")
-
-    }
-    return null
-      
+function Comprueba() {
+  if (usuario.tipo === "maestro" || usuario.tipo === "admin") {
+    return null;
+  } else {
+    router.push("/login");
   }
+  return null;
+}
+  
   return (
     <div onMouseEnter={Comprueba}>
 <Espace></Espace>
@@ -178,7 +179,7 @@ max-widht: 90%;
           >
           </div>
           <Link href="/gestioneducativa"><IMG width="40px" src="../static/img/ic_flecha.svg"/></Link>
-          <H2>Crear Cuenta</H2>
+          <H2>Crear Docente</H2>
           <form onSubmit={handleSubmit} noValidate>
             <Li><label htmlFor="tutor"><lettre>Seleccione esta casilla si es tutor</lettre></label>
             <input
