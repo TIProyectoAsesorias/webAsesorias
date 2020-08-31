@@ -90,7 +90,7 @@ const Docentes = () => {
   `;
 
   const H2 = styled.h1`
-  margin-top: -20px;
+  margin-top: -80px;
   margin-bottom: 5px;
   `;
   const H22 = styled.h2`
