@@ -4,7 +4,7 @@ import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '200px',alignContent:"center center",
+    width: '300px',alignContent:"center center",
     '& > * + *': {
       marginTop: theme.spacing(2),
     },

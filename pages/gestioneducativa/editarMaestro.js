@@ -12,6 +12,49 @@ import * as firefire from "firebase";
 const Espace = styled.div`
   padding-top: 7rem;
 `;
+const Li = styled.li`
+    list-style: none;
+    margin-bottom: 5px;
+  `;
+  const Input = styled.input`
+  width: 300px;
+  margin-left: -4px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  text-align: center;
+  border: solid 1px #707070;
+`;
+const Inpux = styled.input`
+    width: 300px;
+    text-align: center;
+    display: center;
+    height: 55px;
+    margin-left: 5px;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    box-shadow: 0px 5px 7px -4px #000000;
+    webkit-box-shadow: 0px 5px 7px -4px #000000;
+    background: #006933;
+
+    font-family: var(--unnamed-font-family-roboto);
+    font-style: var(--unnamed-font-style-regular);
+    font-size: var(--unnamed-font-size-30);
+    line-height: var(--unnamed-line-spacing-37);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: #ffffff;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:hover {
+      background: linear-gradient(180deg, #01602a 0%, #01602a 100%);
+    }
+    &:active {
+      color: #006933;
+    }
+  `;
 function editarMaestro({ router }) {
   const cambiar = useRouter();
   const [maestro, setMaestro] = useState(router.query);
@@ -170,16 +213,16 @@ function editarMaestro({ router }) {
             <>
               <div>
                 <form onSubmit={handleSubmit} noValidate>
-                  <label htmlFor="nombre">Nombre </label>
-                  <input
+                  <Li><label htmlFor="nombre"><lettre>Nombre</lettre></label></Li>
+                  <Li><Input
                     type="text"
                     id="nombre"
                     name="nombre"
                     value={valores.nombre}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                  />
-                  <label htmlFor="tutor">Tutor</label>
+                  /></Li>
+                  <Li><label htmlFor="tutor"><lettre>Tutor</lettre></label>
                   <input
                     type="checkbox"
                     name="tutor"
@@ -187,10 +230,11 @@ function editarMaestro({ router }) {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                  </Li>
                   <fieldset>
-                    <legend>Horario</legend>
-                    <label htmlFor="lunes">
-                      Lunes
+                    <legend><h2>Horario</h2></legend>
+                    <Li><label htmlFor="lunes">
+                      <lettre>Lunes</lettre>
                       <input
                         type="time"
                         name="lunesEntrada"
@@ -206,8 +250,10 @@ function editarMaestro({ router }) {
                         onBlur={handleBlur}
                       />
                     </label>
+                    </Li>
+                    <Li>
                     <label htmlFor="martes">
-                      Martes
+                      <lettre>Martes</lettre>
                       <input
                         type="time"
                         name="martesEntrada"
@@ -223,8 +269,10 @@ function editarMaestro({ router }) {
                         onBlur={handleBlur}
                       />
                     </label>
+                    </Li>
+                    <Li>
                     <label htmlFor="miercoles">
-                      Miercoles
+                      <lettre>Miercoles</lettre>
                       <input
                         type="time"
                         name="miercolesEntrada"
@@ -240,8 +288,10 @@ function editarMaestro({ router }) {
                         onBlur={handleBlur}
                       />
                     </label>
+                    </Li>
+                    <Li>
                     <label htmlFor="jueves">
-                      Jueves
+                      <lettre>Jueves</lettre>
                       <input
                         type="time"
                         name="juevesEntrada"
@@ -257,8 +307,10 @@ function editarMaestro({ router }) {
                         onBlur={handleBlur}
                       />
                     </label>
+                    </Li>
+                    <Li>
                     <label htmlFor="viernes">
-                      Viernes
+                      <lettre>Viernes</lettre>
                       <input
                         type="time"
                         name="viernesEntrada"
@@ -274,10 +326,12 @@ function editarMaestro({ router }) {
                         onBlur={handleBlur}
                       />
                     </label>
+                    </Li>
                   </fieldset>
-                  <input type="submit" value="EDITAR" />
+                  <h2>Materias</h2>
+                  <Inpux type="submit" value="EDITAR" />
                 </form>
-                <h2>Materias</h2>
+               
                 <Materias />
               </div>
             </>
